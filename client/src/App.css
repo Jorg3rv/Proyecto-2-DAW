@@ -1,3 +1,4 @@
+/* 
 .App {
   text-align: center;
 }
@@ -35,4 +36,102 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.recuadro {
+  background-color: black;
+  width: 82%;
+  height: 80%;
+  border: 4px solid #00ff93;
+  border-radius: 5px;
+}
+
+.recuadro-titulo-valores {
+  background-color: black;
+  margin-top: 7rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 20%;
+  border: 4px solid #00ff93;
+  border-radius: 50px;
+  margin: 0 3rem;
+}
+
+.titulo {
+  color: #fc93ff;
+  text-align: center;
+  padding-top: 5rem;
+  font-size: 7rem;
+  text-shadow: 5px 5px 0px #00ff93;
+  font-family: "Press Start 2P", cursive;
+}
+
+.titulo-valores {
+  color: #fc93ff;
+  font-size: 4rem;
+  text-shadow: 5px 5px 0px #00ff93;
+  font-family: "Press Start 2P", cursive;
+}
+
+.valores-tratados {
+  font-family: "Press Start 2P", cursive;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.options-valores {
+  background-color: black;
+  margin-top: 7rem !important;
+  display: flex;
+  color: white;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 2rem;
+  height: 40%;
+  border: 4px solid #00ff93;
+  margin: 0 3rem;
+}
+
+.botones {
+  padding-top: 15rem;
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.links {
+  text-decoration: none;
+  color: #fffcff;
+  border: none;
+  padding: 10px 20px;
+  background-color: #ccc;
+  border-radius: 1px;
+  font-size: 45px;
+  font-family: "Press Start 2P", cursive;
+}
+
+.mi_btn-start {
+  background-color: #00c271;
+}
+
+.mi_btn-menu {
+  background-color: rgb(81, 81, 235);
+}
+
+.mi_btn-sign_in {
+  background-color: palevioletred;
+}
+
+.title-login {
+  margin: 0 !important;
+  color: white;
+  padding-left: 2rem !important;
+  font-family: Arial, sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
