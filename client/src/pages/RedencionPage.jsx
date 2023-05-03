@@ -5,7 +5,7 @@ import { colors } from "@mui/material";
 // import { ControlBar, Player } from "video-react";
 // import "video-react/dist/video-react.css";
 
-const PartidaPage = () => {
+const RedencionPage = () => {
   return (
     <div
       style={{
@@ -50,27 +50,15 @@ const PartidaPage = () => {
             justifyContent: "space-between",
           }}
         >
-          <Link className="links" to="/redencion">
+          <Link className="links" to="/fracaso">
             <button className="mi-btn-caso">
               Llego tarde, ya le ayudará alguien.
             </button>
           </Link>
 
-          <Link className="links" to="/partida">
+          <Link className="links" to="/victoria">
             <button className="mi-btn-caso">
               Puedo ayudar a que se levante
-            </button>
-          </Link>
-
-          <Link className="links" to="/partida">
-            <button className="mi-btn-caso">
-              Puedo ayudarle y pedir ayuda por si se ha hecho daño.
-            </button>
-          </Link>
-
-          <Link className="links" to="/redencion">
-            <button className="mi-btn-caso">
-              JAJAJA ¡qué torpe! Me voy a clase.
             </button>
           </Link>
         </div>
@@ -79,4 +67,4 @@ const PartidaPage = () => {
   );
 };
 
-export default PartidaPage;
+export default RedencionPage;
