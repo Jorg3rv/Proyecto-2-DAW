@@ -1,5 +1,21 @@
 const express = require('express');
+const connection = require('./connectionDb');
 require('dotenv').config();
+
+
+
+connection.connect(function (error) {
+    if (error) {
+        console.error('Error de conexión: ' + error.stack);
+        process.exit(1);
+    }
+
+    console.log('Conectado a la base de datos MySQL.');
+});
+
+
+
+
 
 const app = express();
 
@@ -10,6 +26,9 @@ if (!port) {
     process.exit(1);
 }
 
+
 app.listen(port, () => {
+
     console.log(`Server is running on port: ${port}`);
 })
+
