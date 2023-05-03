@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fe791a7f.css",
+    "main.js": "/static/js/main.9b3b28be.js",
+    "static/media/massallera.TTF": "/static/media/massallera.707b7980eaa768d7e3bc.TTF",
+    "index.html": "/index.html",
+    "main.fe791a7f.css.map": "/static/css/main.fe791a7f.css.map",
+    "main.9b3b28be.js.map": "/static/js/main.9b3b28be.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fe791a7f.css",
+    "static/js/main.9b3b28be.js"
+  ]
+}
