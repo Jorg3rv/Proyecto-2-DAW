@@ -13,7 +13,7 @@ const RedencionPage = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundImage: `url("/cielo.jpg")`,
+        backgroundImage: `url("/tormenta.jpg")`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}

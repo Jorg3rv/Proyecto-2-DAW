@@ -81,6 +81,8 @@
   color: #fffcff;
   border: none;
   font-size: 40px;
+    
+  
 }
 
 .mi-btn-start {
@@ -92,6 +94,13 @@
   background-color: rgb(81, 81, 235);
   padding: 1rem;
 }
+
+.mi-btn-menu-pre {
+  background-color: black;
+  padding: 1rem;
+  margin-top: 8%;
+}
+
 
 .mi-btn-caso{
   font-size: 14px;  
@@ -174,4 +183,10 @@
   display: flex;
   position: relative;
   top: 40px;
+}
+
+.osito{
+  width: 15%;
+  height: auto;
+ margin-left: 42.5%;
 }

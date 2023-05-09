@@ -26,13 +26,13 @@ const MainPage = () => {
         <div className="titulo">supervalues</div>
         <div className="botones">
           <button className="mi-btn-start">
-            <Link className="links" to="/partida">
-              Iniciar Juego
+            <Link className="links" to="/prePartida">
+               Empezar
             </Link>
           </button>
           <button className="mi-btn-menu ">
             <Link className="links" to="/crear-partida">
-              Crear Juego
+              Crear
             </Link>
           </button>
         </div>

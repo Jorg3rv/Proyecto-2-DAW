@@ -5,11 +5,14 @@ import { colors } from "@mui/material";
 // import { ControlBar, Player } from "video-react";
 // import "video-react/dist/video-react.css";
 
-
 const VictoriaPage = () => {
   return (
-    <h1 className="titulo">HAS ACERTADO</h1>
+    <div>
+      <h1 className="titulo">HAS ACERTADO</h1>
+    
+</div>
   );
 };
+
 
 export default VictoriaPage;
