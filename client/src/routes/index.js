@@ -3,17 +3,26 @@ import MainPage from '../pages/MainPage';
 import LoginPage from '../pages/LoginPage';
 import ProtectedRoute from './ProtectedRoute';
 import PartidaPage from '../pages/PartidaPage';
-import RedencionPage from '../pages/RedencionPage';
 import VictoriaPage from '../pages/VictoriaPage';
 import FracasoPage from '../pages/FracasoPage';
-import PasivaPage from '../pages/PasivaPage';
+import PrePartida from '../pages/PrePartida';
 import AgresivaPage from '../pages/AgresivaPage';
-import PrePartidaPage from '../pages/PrePartida';
+import PasivaPage from '../pages/PasivaPage';
+import CreacionPage from '../pages/CreacionPage';
+import AgresivaEPage from '../pages/AgresivaEPage';
+import PasivaEPage from '../pages/PasivaEPage';
+import VictoriaEPage from '../pages/VictoriaEPage';
+import FracasoEPage from '../pages/FracasoEPage';
+import EquipoPage from '../pages/EquipoPage';
 
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <ProtectedRoute component={<MainPage />} />,
+        element: <ProtectedRoute component={<LoginPage />} />,
+    },
+    {
+        path: '/main',
+        element: <MainPage />,
     },
     {
         path: '/login',
@@ -24,30 +33,49 @@ export const router = createBrowserRouter([
         element: <PartidaPage />,
     },
     {
-        path: '/redencion',
-        element: <RedencionPage />,
-    },
-    {
         path: '/fracaso',
         element: <FracasoPage />,
     },
     {
         path: '/victoria',
         element: <VictoriaPage />,
-    },
+    }
+    ,
     {
-        path: '/pasiva',
-        element: <PasivaPage />,
+        path: '/prePartida',
+        element: <PrePartida />,
     },
     {
         path: '/agresiva',
         element: <AgresivaPage />,
     },
     {
-        path: '/prePartida',
-        element: <PrePartidaPage />,
+        path: '/pasiva',
+        element: <PasivaPage />,
+    },
+    {
+        path: '/crear-partida',
+        element: <CreacionPage />,
     }
-
-    
-
+    ,
+    {
+        path: '/pasivaE',
+        element: <PasivaEPage />,
+    },
+    {
+        path: '/agresivaE',
+        element: <AgresivaEPage />,
+    },
+    {
+        path: '/victoriaE',
+        element: <VictoriaEPage />,
+    },
+    {
+        path: '/fracasoE',
+        element: <FracasoEPage />,
+    },
+    {
+        path: '/equipo',
+        element: <EquipoPage />,
+    }
 ])

@@ -29,37 +29,35 @@ const PasivaPage = () => {
             display: "flex",
             padding: "2rem 4rem",
             gap: "1rem",
-            flexDirection: "column",
-            height: "50%",
+            flexDirection: "column"
           }}
           className="opciones"
         >
           <h2 style={{ color: "white" }}>
-          La profesora pregunta, ¿dónde está Lucas? 
-Un niño contesta: en el pasillo, se ha caído. 
-¿Y no le habéis ayudado?
-Llegaba tarde, no podía. 
-Si un compañero se cae ¿qué debemos hacer?
+          P-¿dónde está Lucas? 
+A-En el pasillo, se ha caído. 
+P-¿Y no le habéis ayudado?
+A-Llegaba tarde, no podía. 
+P-Si un compañero se cae ¿qué debemos hacer?
           </h2>
-          <h2 style={{ color: "white" }}>Elige una opcion:</h2>
         </div>
 
         <div
           style={{
-            display: "flex",
+            display: "grid",
             gap: "1rem",
             padding: "2rem 4rem",
-            justifyContent: "space-between",
+            gridTemplateColumns:"repeat(2,1fr)"
           }}
         >
           <Link className="links" to="/victoria">
-            <button className="mi-btn-caso">
+            <button className="mi-btn-caso-redencion">
             Tenemos que ayudarle, ¡vamos! 
             </button>
           </Link>
 
           <Link className="links" to="/fracaso">
-            <button className="mi-btn-caso">
+            <button className="mi-btn-caso-redencion">
             Nada, ya le ayudarán.
             </button>
           </Link>

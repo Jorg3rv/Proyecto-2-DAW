@@ -2,10 +2,8 @@ import React from "react";
 import { Link, Navigate } from "react-router-dom";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { colors } from "@mui/material";
-// import { ControlBar, Player } from "video-react";
-// import "video-react/dist/video-react.css";
 
-const PartidaPage = () => {
+const EquipoPage = () => {
   return (
     <div
       style={{
@@ -18,10 +16,6 @@ const PartidaPage = () => {
         backgroundSize: "cover",
       }}
     >
-      {/* <Player ref={videoRef} playsInline autoPlay muted>
-          <source src="/background-main.mp4" type="video/mp4" />
-          <ControlBar disableDefaultControls={true} autoHide={false} />
-        </Player> */}
 
       <div className="recuadro">
         <div
@@ -34,9 +28,7 @@ const PartidaPage = () => {
           className="opciones"
         >
           <h2 style={{ color: "white" }}>
-            Todos los días
-            entramos al cole corriendo, y hoy se ha caído un niño. ¿Qué puedo
-            hacer?
+          Chicos tenemos que hacer una cartulina con el tema que queramos, ¿qué hacemos?
           </h2>
         </div>
 
@@ -49,27 +41,27 @@ const PartidaPage = () => {
             justifyContent: "space-between",
           }}
         >
-          <Link className="links" to="/pasiva">
+          <Link className="links" to="/pasivaE">
             <button className="mi-btn-caso">
-              Llego tarde, ya le ayudará alguien.
+            Me callo y dejo que los demás decidan.
             </button>
           </Link>
 
-          <Link className="links" to="/victoria">
+          <Link className="links" to="/victoriaE">
             <button className="mi-btn-caso">
-              Puedo ayudar a que se levante
+            Vamos a dar todos nuestro punto de vista y llegamos a un acuerdo, ¿vale?
             </button>
           </Link>
 
-          <Link className="links" to="/victoria">
+          <Link className="links" to="/victoriaE">
             <button className="mi-btn-caso">
-              Puedo ayudarle y pedir ayuda por si se ha hecho daño.
+            Vamos a votar.
             </button>
           </Link>
 
-          <Link className="links" to="/agresiva">
+          <Link className="links" to="/agresivaE">
             <button className="mi-btn-caso">
-              JAJAJA ¡qué torpe! Me voy a clase.
+            Propones tu tema sin importar la opinión del resto.
             </button>
           </Link>
         </div>
@@ -78,4 +70,4 @@ const PartidaPage = () => {
   );
 };
 
-export default PartidaPage;
+export default EquipoPage;

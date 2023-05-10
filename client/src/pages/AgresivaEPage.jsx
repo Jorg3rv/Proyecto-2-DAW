@@ -5,7 +5,7 @@ import { colors } from "@mui/material";
 // import { ControlBar, Player } from "video-react";
 // import "video-react/dist/video-react.css";
 
-const AgresivaPage = () => {
+const AgresivaEPage = () => {
   return (
     <div
       style={{
@@ -18,10 +18,6 @@ const AgresivaPage = () => {
         backgroundSize: "cover",
       }}
     >
-      {/* <Player ref={videoRef} playsInline autoPlay muted>
-          <source src="/background-main.mp4" type="video/mp4" />
-          <ControlBar disableDefaultControls={true} autoHide={false} />
-        </Player> */}
 
       <div className="recuadro">
         <div
@@ -34,9 +30,7 @@ const AgresivaPage = () => {
           className="opciones"
         >
           <h2 style={{ color: "white" }}>
-          P-¿Qué te ha pasado?
-A-Me he caído en el pasillo y nadie me ha ayudado. 
-P-¿Cómo pensáis que se siente vuestro compañero?
+Se nota que no habéis sabido poneros de acuerdo. ¿Qué podemos hacer para solucionarlo?
           </h2>
         </div>
 
@@ -48,15 +42,15 @@ P-¿Cómo pensáis que se siente vuestro compañero?
             gridTemplateColumns:"repeat(2,1fr)"
           }}
         >
-          <Link className="links" to="/victoria">
+          <Link className="links" to="/victoriaE">
             <button className="mi-btn-caso-redencion">
-            Mal, sé que no lo he hecho bien y le acompaño a la enfermería.
+            Nos volvemos a reunir…
             </button>
           </Link>
 
-          <Link className="links" to="/fracaso">
+          <Link className="links" to="/fracasoE">
             <button className="mi-btn-caso-redencion">
-            Me callo, ha sido muy gracioso. 
+            Mi tema era perfecto, mis compañeros han tenido la culpa.
             </button>
           </Link>
         </div>
@@ -65,4 +59,4 @@ P-¿Cómo pensáis que se siente vuestro compañero?
   );
 };
 
-export default AgresivaPage;
+export default AgresivaEPage;

@@ -5,7 +5,7 @@ import { colors } from "@mui/material";
 // import { ControlBar, Player } from "video-react";
 // import "video-react/dist/video-react.css";
 
-const RedencionPage = () => {
+const PasivaEPage = () => {
   return (
     <div
       style={{
@@ -18,10 +18,6 @@ const RedencionPage = () => {
         backgroundSize: "cover",
       }}
     >
-      {/* <Player ref={videoRef} playsInline autoPlay muted>
-          <source src="/background-main.mp4" type="video/mp4" />
-          <ControlBar disableDefaultControls={true} autoHide={false} />
-        </Player> */}
 
       <div className="recuadro">
         <div
@@ -29,36 +25,32 @@ const RedencionPage = () => {
             display: "flex",
             padding: "2rem 4rem",
             gap: "1rem",
-            flexDirection: "column",
-            height: "50%",
+            flexDirection: "column"
           }}
           className="opciones"
         >
           <h2 style={{ color: "white" }}>
-            Pasando un día con… (Y el nombre del personaje) Todos los días
-            entramos al cole corriendo, y hoy se ha caído un niño. ¿Qué puedo
-            hacer?
+          Se nota que no habéis sabido poneros de acuerdo. ¿Qué podemos hacer para solucionarlo?
           </h2>
-          <h2 style={{ color: "white" }}>Elige una opcion:</h2>
         </div>
 
         <div
           style={{
-            display: "flex",
+            display: "grid",
             gap: "1rem",
             padding: "2rem 4rem",
-            justifyContent: "space-between",
+            gridTemplateColumns:"repeat(2,1fr)"
           }}
         >
-          <Link className="links" to="/fracaso">
-            <button className="mi-btn-caso">
-              Llego tarde, ya le ayudará alguien.
+          <Link className="links" to="/victoriaE">
+            <button className="mi-btn-caso-redencion">
+            Nos volvemos a reunir y llegamos a un acuerdo escuchándonos.
             </button>
           </Link>
 
-          <Link className="links" to="/victoria">
-            <button className="mi-btn-caso">
-              Puedo ayudar a que se levante
+          <Link className="links" to="/fracasoE">
+            <button className="mi-btn-caso-redencion">
+            Ya está hecho y no nos queremos volver a reunir.
             </button>
           </Link>
         </div>
@@ -67,4 +59,4 @@ const RedencionPage = () => {
   );
 };
 
-export default RedencionPage;
+export default PasivaEPage;

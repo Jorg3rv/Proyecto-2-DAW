@@ -102,12 +102,15 @@
 }
 
 
-.mi-btn-caso{
-  font-size: 14px;  
+.mi-btn-caso {
+  font-size: 14px;
   background-color: black;
   color: white;
   padding: 1rem;
-
+  width: -webkit-fill-available;
+  height: 100%;
+  margin-bottom: 20%;
+  margin-top: 8%;
 }
 
 
@@ -190,3 +193,21 @@
   height: auto;
  margin-left: 42.5%;
 }
+
+.mi-btn-caso-redencion{
+  font-size: 14px;
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  width: -webkit-fill-available;
+  height: 150%;
+  margin-bottom: 20%;
+  margin-top: 8%;
+ 
+}
+
+.datos-primera-pagina{
+display: grid;
+grid-template-columns: repeat(2,1fr);
+}
+

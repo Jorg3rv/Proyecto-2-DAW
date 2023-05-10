@@ -6,7 +6,7 @@ import axios from "axios";
 // import "video-react/dist/video-react.css";
 
 const MainPage = () => {
-  const testdb=async()=>{
+   const testdb=async()=>{
     await axios.get("/api/v1/profesores");
   }
   return (
@@ -29,15 +29,18 @@ const MainPage = () => {
       <div className="recuadro">
         <div className="titulo">supervalues</div>
         <div className="botones">
-          <button className="mi-btn-start" onClick={testdb}>
-            {/* <Link className="links" to="/prePartida"> */}
+          <button className="mi-btn-start">
+            <Link className="links" to="/prePartida">
                Empezar
-            {/* </Link> */}
+            </Link>
           </button>
           <button className="mi-btn-menu ">
             <Link className="links" to="/crear-partida">
               Crear
             </Link>
+          </button>
+            <button className="mi-btn-start" onClick={testdb}>
+           Consulta
           </button>
         </div>
         <div

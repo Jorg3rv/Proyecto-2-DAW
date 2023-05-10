@@ -8,9 +8,14 @@ import { colors } from "@mui/material";
 const VictoriaPage = () => {
   return (
     <div>
-      <h1 className="titulo">HAS ACERTADO</h1>
-    
-</div>
+      <h1 className="titulo">HAS CONSEGUIDO LAS BOTAS DE LA AMISTAD</h1>
+
+      <Link className="links" to="/equipo">
+            <button className="mi-btn-caso-redencion">
+            Continuemos
+            </button>
+          </Link>
+          </div>
   );
 };
 

@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
   const validationSchema = yup.object({
@@ -110,8 +111,17 @@ const LoginPage = () => {
           </form>
         </Box>
       </div>
+      <Link className="links" to="/main">
+      <button className="mi-btn-start">
+            
+              Iniciar Juego
+            
+          </button>
+          </Link>
     </div>
+    
   );
 };
 
 export default LoginPage;
+
