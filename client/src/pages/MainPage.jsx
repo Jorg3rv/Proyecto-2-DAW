@@ -1,10 +1,14 @@
 import React from "react";
 import { Link, Navigate } from "react-router-dom";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import axios from "axios";
 // import { ControlBar, Player } from "video-react";
 // import "video-react/dist/video-react.css";
 
 const MainPage = () => {
+  const testdb=async()=>{
+    await axios.get("/api/v1/profesores");
+  }
   return (
     <div
       style={{
@@ -25,10 +29,10 @@ const MainPage = () => {
       <div className="recuadro">
         <div className="titulo">supervalues</div>
         <div className="botones">
-          <button className="mi-btn-start">
-            <Link className="links" to="/prePartida">
+          <button className="mi-btn-start" onClick={testdb}>
+            {/* <Link className="links" to="/prePartida"> */}
                Empezar
-            </Link>
+            {/* </Link> */}
           </button>
           <button className="mi-btn-menu ">
             <Link className="links" to="/crear-partida">

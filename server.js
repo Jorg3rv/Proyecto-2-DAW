@@ -1,5 +1,6 @@
 const express = require('express');
 const connection = require('./connectionDb');
+const profesoresRoutes=require('./routes/profesorRouter');
 require('dotenv').config();
 
 
@@ -32,3 +33,4 @@ app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 })
 
+app.use('/api/v1/profesores', profesoresRoutes);
