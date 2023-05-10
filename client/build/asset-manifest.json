@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.fe791a7f.css",
-    "main.js": "/static/js/main.9b3b28be.js",
+    "main.css": "/static/css/main.6db066f7.css",
+    "main.js": "/static/js/main.99d8e848.js",
+    "static/media/osito_avatar.jpg": "/static/media/osito_avatar.ea141069b16740027607.jpg",
     "static/media/massallera.TTF": "/static/media/massallera.707b7980eaa768d7e3bc.TTF",
     "index.html": "/index.html",
-    "main.fe791a7f.css.map": "/static/css/main.fe791a7f.css.map",
-    "main.9b3b28be.js.map": "/static/js/main.9b3b28be.js.map"
+    "main.6db066f7.css.map": "/static/css/main.6db066f7.css.map",
+    "main.99d8e848.js.map": "/static/js/main.99d8e848.js.map"
   },
   "entrypoints": [
-    "static/css/main.fe791a7f.css",
-    "static/js/main.9b3b28be.js"
+    "static/css/main.6db066f7.css",
+    "static/js/main.99d8e848.js"
   ]
 }
