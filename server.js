@@ -27,6 +27,11 @@ if (!port) {
     process.exit(1);
 }
 
+app.use(express.static(path.join(__dirname,'client/build')))
+app.get('*',function(req,res){
+    res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+})
+
 
 app.listen(port, () => {
 
