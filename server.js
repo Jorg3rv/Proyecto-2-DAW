@@ -1,6 +1,6 @@
 const express = require('express');
 const connection = require('./connectionDb');
-const profesoresRoutes=require('./routes/profesorRouter');
+const profesoresRoutes = require('./routes/profesorRouter');
 require('dotenv').config();
 
 
@@ -27,9 +27,11 @@ if (!port) {
     process.exit(1);
 }
 
-app.use(express.static(path.join(__dirname,'client/build')))
-app.get('*',function(req,res){
-    res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+app.use('/api/v1/profesores', profesoresRoutes);
+
+app.use(express.static(path.join(__dirname, 'client/build')))
+app.get('*', function (req, res) {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
 })
 
 
@@ -38,4 +40,3 @@ app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 })
 
-app.use('/api/v1/profesores', profesoresRoutes);
