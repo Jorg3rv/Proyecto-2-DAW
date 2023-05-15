@@ -2,7 +2,7 @@ const connection = require('../connectionDb');
 
 exports.getCasoById = function (req, res) {
     let idCaso = req.params.id;
-    let query = `SELECT * FROM caso JOIN itinerario_caso ON caso.id_Caso = itinerario_caso.id_caso WHERE id_Itinerario = 1 AND caso.id_caso = ${idCaso}`;
+    let query = `SELECT * FROM caso JOIN itinerario_caso ON caso.id_Caso = itinerario_caso.id_caso WHERE id_Itinerario = LAST_INSERT_ID() AND caso.id_caso = ${idCaso}`;
 
     connection.query(query, (error, results, fields) => {
         if (error) {
