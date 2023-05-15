@@ -1,6 +1,8 @@
 const express = require('express');
 const connection = require('./connectionDb');
 const profesoresRoutes = require('./routes/profesorRouter');
+const casoRoutes = require('./routes/casoRouter');
+const path = require('path');
 require('dotenv').config();
 
 
@@ -28,6 +30,7 @@ if (!port) {
 }
 
 app.use('/api/v1/profesores', profesoresRoutes);
+app.use('/api/v1/casos', casoRoutes);
 
 app.use(express.static(path.join(__dirname, 'client/build')))
 app.get('*', function (req, res) {

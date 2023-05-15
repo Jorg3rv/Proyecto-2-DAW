@@ -6,9 +6,9 @@ import axios from "axios";
 // import "video-react/dist/video-react.css";
 
 const MainPage = () => {
-   const testdb=async()=>{
-    await axios.get("http://18.233.219.179/api/v1/profesores");
-  }
+  const testdb = async () => {
+    await axios.get(`/api/v1/casos/${1}`);
+  };
   return (
     <div
       style={{
@@ -31,7 +31,7 @@ const MainPage = () => {
         <div className="botones">
           <button className="mi-btn-start">
             <Link className="links" to="/prePartida">
-               Empezar
+              Empezar
             </Link>
           </button>
           <button className="mi-btn-menu ">
@@ -39,8 +39,8 @@ const MainPage = () => {
               Crear
             </Link>
           </button>
-            <button className="mi-btn-start" onClick={testdb}>
-           Consulta
+          <button className="mi-btn-start" onClick={testdb}>
+            Consulta
           </button>
         </div>
         <div
