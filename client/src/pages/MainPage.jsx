@@ -7,7 +7,7 @@ import axios from "axios";
 
 const MainPage = () => {
    const testdb=async()=>{
-    await axios.get("/api/v1/profesores");
+    await axios.get("http://18.233.219.179/api/v1/profesores");
   }
   return (
     <div
