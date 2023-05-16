@@ -1,92 +1,138 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { colors } from "@mui/material";
 
 const CreacionPage = () => {
+  const [currentSection, setCurrentSection] = useState(0);
+  const [formValues, setFormValues] = useState({
+    valor: "",
+    chat: "",
+    escenario1: "",
+    file1: "",
+    escenario2: "",
+    file2: "",
+    escenario3: "",
+    file3: "",
+    escenario4: "",
+    file4: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setCurrentSection(currentSection + 1);
+  };
+
+  const handleBack = () => {
+    if (currentSection > 0) {
+      setCurrentSection(currentSection - 1);
+    }
+  };
+
   return (
-    
     <div>
-    <h1>Crea tu propio escenario</h1>
+      <h1>Crea tu propio escenario</h1>
 
-      <label for="valor">Valor:</label>
-      <select id="valor" name="valor">
-        <option value="1">Amistad</option>
-        <option value="2">Justicia</option>
-        <option value="3">Trabajo en equipo</option>
-        <option value="4">Bondad</option>
-        <option value="5">Tolerancia</option>
-      </select>
+      {currentSection === 0 && (
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="valor">Valor:</label>
+          <select id="valor" name="valor" value={formValues.valor} onChange={handleChange}>
+            <option value="1">Amistad</option>
+            <option value="2">Justicia</option>
+            <option value="3">Trabajo en equipo</option>
+            <option value="4">Bondad</option>
+            <option value="5">Tolerancia</option>
+          </select>
 
-      <br /><br />
-      <label for="chat">Texto intro:</label>
-<textarea id="chat" name="chat"></textarea>
-<div className="datos-primera-pagina">
-<div className="textos-primera-pagina">
+          <br /><br />
 
+          <button type="submit">Siguiente</button>
+        </form>
+      )}
 
-<label for="escenario1">Texto Opcion Avanzada:</label>
-<input type="text" id="escenario1" name="escenario1" />
+      {currentSection === 1 && (
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="chat">Texto intro:</label>
+          <textarea id="chat" name="chat" value={formValues.chat} onChange={handleChange}></textarea>
+          <div className="datos-primera-pagina">
+            <div className="textos-primera-pagina">
+              <label htmlFor="escenario1">Texto Opcion Avanzada:</label>
+              <input type="text" id="escenario1" name="escenario1" value={formValues.escenario1} onChange={handleChange} />
+            </div>
+            <div className="imagenes-primera-pagina">
+              <label htmlFor="file1">Imagen Opcion Avanzada:</label>
+              <input type="file" id="file1" name="file1" value={formValues.file1} onChange={handleChange} />
+            </div>
+          </div>
 
+          <button type="submit">Siguiente</button>
+          {currentSection > 0 && <button onClick={handleBack}>Atrás</button>}
+        </form>
+      )}
 
-<label for="escenario1">Texto Opcion Basica:</label>
-<input type="text" id="escenario1" name="escenario1" />
+      {currentSection === 2 && (
+        <form onSubmit={handleSubmit}>
+          <div className="datos-primera-pagina">
+            <div className="textos-primera-pagina">
+              <label htmlFor="escenario2">Texto Opcion Basica:</label>
+              <input type="text" id="escenario2" name="escenario2" value={formValues.escenario2} onChange={handleChange} />
+            </div>
+            <div className="imagenes-primera-pagina">
+              <label htmlFor="file2">Imagen Opcion Basica:</label>
+              <input type="file" id="file2" name="file2" value={formValues.file2} onChange={handleChange} />
+            </div>
+          </div>
 
+          <button type="submit">Siguiente</button>
+          <button onClick={handleBack}>Atrás</button>
+        </form>
+      )}
 
-<label for="escenario1">Texto Opcion Pasiva:</label>
-<input type="text" id="escenario1" name="escenario1" />
+      {currentSection === 3 && (
+        <form onSubmit={handleSubmit}>
+          <div className="datos-primera-pagina">
+            <div className="textos-primera-pagina">
+              <label htmlFor="escenario3">Texto Opcion Pasiva:</label>
+              <input type="text" id="escenario3" name="escenario3" value={formValues.escenario3} onChange={handleChange} />
+            </div>
+            <div className="imagenes-primera-pagina">
+              <label htmlFor="file3">Imagen Opcion Pasiva:</label>
+              <input type="file" id="file3" name="file3" value={formValues.file3} onChange={handleChange} />
+            </div>
+          </div>
 
+          <button type="submit">Siguiente</button>
+          <button onClick={handleBack}>Atrás</button>
+        </form>
+      )}
 
-<label for="escenario1">Texto Opcion Agresiva:</label>
-<input type="text" id="escenario1" name="escenario1" />
-</div>
-<div className="imagenes-primera-pagina">
-      <label for="file1">Imagen Opcion Avanzada:</label>
-      <input type="file" id="file1" name="file1" />
-      <label for="file2">Imagen Opcion Basica:</label>
-      <input type="file" id="file2" name="file2" />
-      <label for="file3">Imagen Opcion Pasiva:</label>
-      <input type="file" id="file3" name="file3" />
-      <label for="file4">Imagen Opcion Agresiva:</label>
-      <input type="file" id="file4" name="file4" />
-</div>
+      {currentSection === 4 && (
+        <form onSubmit={handleSubmit}>
+          <div className="datos-primera-pagina">
+            <div className="textos-primera-pagina">
+              <label htmlFor="escenario4">Texto Opcion Agresiva:</label>
+              <input type="text" id="escenario4" name="escenario4" value={formValues.escenario4} onChange={handleChange} />
+            </div>
+            <div className="imagenes-primera-pagina">
+              <label htmlFor="file4">Imagen Opcion Agresiva:</label>
+              <input type="file" id="file4" name="file4" value={formValues.file4} onChange={handleChange} />
+            </div>
+          </div>
 
-</div>{/*hasta aqui el div1*/}
+          <button type="submit">Siguiente</button>
+          <button onClick={handleBack}>Atrás</button>
+        </form>
+      )}
 
-<div className="datos-redenciones">
-<label for="escenario1">Dialogo Redencion Pasiva :</label>
-<textarea id="chat" name="chat"></textarea>
-
-<label for="escenario1">Texto Opcion Redencion Pasiva Buena:</label>
-<input type="text" id="escenario1" name="escenario1" />
-
-
-<label for="escenario1">Texto Opcion Redencion Pasiva Mala:</label>
-<input type="text" id="escenario1" name="escenario1" />
-
-
-
-<label for="escenario1">Dialogo Agresiva :</label>
-<textarea id="chat" name="chat"></textarea>
-
-<label for="escenario1">Texto Opcion Redencion Agresiva Buena:</label>
-<input type="text" id="escenario1" name="escenario1" />
-
-
-
-<label for="escenario1">Texto Opcion Redencion Agresiva Mala:</label>
-<input type="text" id="escenario1" name="escenario1" />
-</div>{/*hasta aqui el div2*/}
-
-
-      <br /><br />
-
-
-<input type="submit" value="Guardar"/>
-
-      </div>
-
+      {/* Agrega más secciones según tus necesidades */}
+    </div>
   );
 };
 
 export default CreacionPage;
+
