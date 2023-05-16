@@ -1,11 +1,48 @@
-import React from "react";
-import { Link, Navigate } from "react-router-dom";
-import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import { colors } from "@mui/material";
-// import { ControlBar, Player } from "video-react";
-// import "video-react/dist/video-react.css";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
+import axios from "axios";
+import { shuffleArray } from "../helpers/randomOptions";
 
 const PartidaPage = () => {
+  const [loading, setLoading] = useState(true);
+  const [caso, setCaso] = useState(null);
+  const [options, setOptions] = useState([]);
+
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await axios.get(`/api/v1/casos/${1}`);
+      console.log("LA DATA ENTERA: ", data.data);
+      setCaso(data.data);
+      const fields = [
+        {
+          type: "agresiva",
+          text: data.data[0].texto_Opcion_Agresiva,
+        },
+        {
+          type: "victoria",
+          text: data.data[0].texto_Opcion_Avanzada,
+        },
+        {
+          type: "victoria",
+          text: data.data[0].texto_Opcion_Basica,
+        },
+        {
+          type: "pasiva",
+          text: data.data[0].texto_Opcion_Pasiva,
+        },
+      ];
+      const shuffledOptions = shuffleArray(fields);
+      setOptions(shuffledOptions);
+      setLoading(false);
+    })();
+  }, []);
+
+  useEffect(() => {
+    console.log("OPCIONES: ", options);
+  }, [options]);
+
   return (
     <div
       style={{
@@ -18,29 +55,20 @@ const PartidaPage = () => {
         backgroundSize: "cover",
       }}
     >
-      {/* <Player ref={videoRef} playsInline autoPlay muted>
-          <source src="/background-main.mp4" type="video/mp4" />
-          <ControlBar disableDefaultControls={true} autoHide={false} />
-        </Player> */}
-
-      <div className="recuadro">
+      {loading ? <CircularProgress /> : (  <div className="recuadro">
         <div
           style={{
             display: "flex",
             padding: "2rem 4rem",
             gap: "1rem",
-            flexDirection: "column"
+            flexDirection: "column",
           }}
           className="opciones"
         >
-          <h2 style={{ color: "white" }}>
-            Todos los días
-            entramos al cole corriendo, y hoy se ha caído un niño. ¿Qué puedo
-            hacer?
-          </h2>
+          <h2 style={{ color: "white" }}>{caso[0].texto_intro}</h2>
         </div>
 
-        <div 
+        <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(2, 1fr)",
@@ -49,31 +77,16 @@ const PartidaPage = () => {
             justifyContent: "space-between",
           }}
         >
-          <Link className="links" to="/pasiva">
-            <button className="mi-btn-caso">
-              Llego tarde, ya le ayudará alguien.
-            </button>
-          </Link>
-
-          <Link className="links" to="/victoria">
-            <button className="mi-btn-caso">
-              Puedo ayudar a que se levante
-            </button>
-          </Link>
-
-          <Link className="links" to="/victoria">
-            <button className="mi-btn-caso">
-              Puedo ayudarle y pedir ayuda por si se ha hecho daño.
-            </button>
-          </Link>
-
-          <Link className="links" to="/agresiva">
-            <button className="mi-btn-caso">
-              JAJAJA ¡qué torpe! Me voy a clase.
-            </button>
-          </Link>
+          {options.map((option) => {
+            return (
+              <Link className="links" to={`/${option.type}`}>
+                <button className="mi-btn-caso">{option.text}</button>
+              </Link>
+            );
+          })}
         </div>
-      </div>
+      </div>)}
+    
     </div>
   );
 };
