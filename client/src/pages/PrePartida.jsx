@@ -37,14 +37,14 @@ const PrePartidaPage = () => {
         className="opciones"
       >
     <h2 style={{ color: "white" }}>
-    Pasando un día con… (Y el nombre del personaje) 
+    Pasando un día con Poncho el oso. 
     </h2>
     <div >
       <img src="osito.png" alt="osito" className="osito"/>
     </div>
     <button className="mi-btn-menu-pre ">
             <Link className="links" to="/partida">
-              Pregunta
+              Comenzemos
             </Link>
           </button>
     </div>

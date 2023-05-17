@@ -77,10 +77,16 @@ const PartidaPage = () => {
             justifyContent: "space-between",
           }}
         >
-          {options.map((option) => {
+          {options.map((option,index) => {
             return (
               <Link className="links" to={`/${option.type}`}>
-                <button className="mi-btn-caso">{option.text}</button>
+                <button className="mi-btn-caso" 
+                style={{
+                  backgroundImage: `url("/imagen${index+1}.jpg")`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                }}
+                >{option.text}</button>
               </Link>
             );
           })}

@@ -16,6 +16,12 @@ const CreacionPage = () => {
     file3: "",
     escenario4: "",
     file4: "",
+    dialogoRedencionPasiva: "",
+    redencionPasivaBuena: "",
+    redencionPasivaMala: "",
+    dialogoAgresiva: "",
+    redencionAgresivaBuena: "",
+    redencionAgresivaMala: "",
   });
 
   const handleChange = (e) => {
@@ -75,64 +81,124 @@ const CreacionPage = () => {
         </form>
       )}
 
-      {currentSection === 2 && (
+{currentSection === 2 && (
+  <form onSubmit={handleSubmit}>
+    <div className="datos-primera-pagina">
+      <div className="textos-primera-pagina">
+        <label htmlFor="escenario2">Texto Opcion Basica:</label>
+        <input type="text" id="escenario2" name="escenario2" value={formValues.escenario2} onChange={handleChange} />
+      </div>
+      <div className="imagenes-primera-pagina">
+        <label htmlFor="file2">Imagen Opcion Basica:</label>
+        <input type="file" id="file2" name="file2" value={formValues.file2} onChange={handleChange} />
+      </div>
+    </div>
+
+    <button type="submit">Siguiente</button>
+    {currentSection > 0 && <button onClick={handleBack}>Atrás</button>}
+  </form>
+)}
+
+{currentSection === 3 && (
+  <form onSubmit={handleSubmit}>
+    <div className="datos-primera-pagina">
+      <div className="textos-primera-pagina">
+        <label htmlFor="escenario3">Texto Opcion Media:</label>
+        <input type="text" id="escenario3" name="escenario3" value={formValues.escenario3} onChange={handleChange} />
+      </div>
+      <div className="imagenes-primera-pagina">
+        <label htmlFor="file3">Imagen Opcion Media:</label>
+        <input type="file" id="file3" name="file3" value={formValues.file3} onChange={handleChange} />
+      </div>
+    </div>
+
+    <button type="submit">Siguiente</button>
+    {currentSection > 0 && <button onClick={handleBack}>Atrás</button>}
+  </form>
+)}
+
+{currentSection === 4 && (
+  <form onSubmit={handleSubmit}>
+    <div className="datos-primera-pagina">
+      <div className="textos-primera-pagina">
+        <label htmlFor="escenario4">Texto Opcion Avanzada:</label>
+        <input type="text" id="escenario4" name="escenario4" value={formValues.escenario4} onChange={handleChange} />
+      </div>
+      <div className="imagenes-primera-pagina">
+        <label htmlFor="file4">Imagen Opcion Avanzada:</label>
+        <input type="file" id="file4" name="file4" value={formValues.file4} onChange={handleChange} />
+      </div>
+    </div>
+
+    <button type="submit">Siguiente</button>
+    {currentSection > 0 && <button onClick={handleBack}>Atrás</button>}
+  </form>
+)}
+
+{currentSection === 5 && (
+  <form onSubmit={handleSubmit}>
+    <div className="redencion-pasiva">
+      <div className="textos-redencion-pasiva">
+        <label htmlFor="redencionPasivaBuena">Redención Pasiva Buena:</label>
+        <input type="text" id="redencionPasivaBuena" name="redencionPasivaBuena" value={formValues.redencionPasivaBuena} onChange={handleChange} />
+      </div>
+      <div className="textos-redencion-pasiva">
+        <label htmlFor="redencionPasivaMala">Redención Pasiva Mala:</label>
+        <input type="text" id="redencionPasivaMala" name="redencionPasivaMala" value={formValues.redencionPasivaMala} onChange={handleChange} />
+      </div>
+    </div>
+
+    <button type="submit">Siguiente</button>
+    {currentSection > 0 && <button onClick={handleBack}>Atrás</button>}
+  </form>
+)}
+ {currentSection === 6 && (
         <form onSubmit={handleSubmit}>
-          <div className="datos-primera-pagina">
-            <div className="textos-primera-pagina">
-              <label htmlFor="escenario2">Texto Opcion Basica:</label>
-              <input type="text" id="escenario2" name="escenario2" value={formValues.escenario2} onChange={handleChange} />
+          <div className="redencion-agresiva">
+            <div className="textos-redencion-agresiva">
+              <label htmlFor="dialogoAgresiva">Diálogo Agresiva:</label>
+              <input type="text" id="dialogoAgresiva" name="dialogoAgresiva" value={formValues.dialogoAgresiva} onChange={handleChange} />
             </div>
-            <div className="imagenes-primera-pagina">
-              <label htmlFor="file2">Imagen Opcion Basica:</label>
-              <input type="file" id="file2" name="file2" value={formValues.file2} onChange={handleChange} />
+            <div className="textos-redencion-agresiva">
+              <label htmlFor="redencionAgresivaBuena">Redención Agresiva Buena:</label>
+              <input type="text" id="redencionAgresivaBuena" name="redencionAgresivaBuena" value={formValues.redencionAgresivaBuena} onChange={handleChange} />
+            </div>
+            <div className="textos-redencion-agresiva">
+              <label htmlFor="redencionAgresivaMala">Redención Agresiva Mala:</label>
+              <input type="text" id="redencionAgresivaMala" name="redencionAgresivaMala" value={formValues.redencionAgresivaMala} onChange={handleChange} />
             </div>
           </div>
 
           <button type="submit">Siguiente</button>
-          <button onClick={handleBack}>Atrás</button>
+          {currentSection > 0 && <button onClick={handleBack}>Atrás</button>}
         </form>
       )}
 
-      {currentSection === 3 && (
-        <form onSubmit={handleSubmit}>
-          <div className="datos-primera-pagina">
-            <div className="textos-primera-pagina">
-              <label htmlFor="escenario3">Texto Opcion Pasiva:</label>
-              <input type="text" id="escenario3" name="escenario3" value={formValues.escenario3} onChange={handleChange} />
-            </div>
-            <div className="imagenes-primera-pagina">
-              <label htmlFor="file3">Imagen Opcion Pasiva:</label>
-              <input type="file" id="file3" name="file3" value={formValues.file3} onChange={handleChange} />
-            </div>
-          </div>
+      {currentSection === 7 && (
+        <div>
+          <h2>Resumen de la creación</h2>
+          <p>Valor seleccionado: {formValues.valor}</p>
+          <p>Texto intro: {formValues.chat}</p>
+          <p>Texto Opción Avanzada: {formValues.escenario1}</p>
+          <p>Imagen Opción Avanzada: {formValues.file1}</p>
+          <p>Texto Opción Básica: {formValues.escenario2}</p>
+          <p>Imagen Opción Básica: {formValues.file2}</p>
+          <p>Texto Opción Media: {formValues.escenario3}</p>
+          <p>Imagen Opción Media: {formValues.file3}</p>
+          <p>Texto Opción Avanzada: {formValues.escenario4}</p>
+          <p>Imagen Opción Avanzada: {formValues.file4}</p>
+          <p>Redención Pasiva Buena: {formValues.redencionPasivaBuena}</p>
+          <p>Redención Pasiva Mala: {formValues.redencionPasivaMala}</p>
+          <p>Diálogo Agresiva: {formValues.dialogoAgresiva}</p>
+          <p>Redención Agresiva Buena: {formValues.redencionAgresivaBuena}</p>
+          <p>Redención Agresiva Mala: {formValues.redencionAgresivaMala}</p>
 
-          <button type="submit">Siguiente</button>
-          <button onClick={handleBack}>Atrás</button>
-        </form>
+          <button onClick={() => setCurrentSection(0)}>Volver al principio</button>
+          <button>Crear escenario</button>
+        </div>
       )}
-
-      {currentSection === 4 && (
-        <form onSubmit={handleSubmit}>
-          <div className="datos-primera-pagina">
-            <div className="textos-primera-pagina">
-              <label htmlFor="escenario4">Texto Opcion Agresiva:</label>
-              <input type="text" id="escenario4" name="escenario4" value={formValues.escenario4} onChange={handleChange} />
-            </div>
-            <div className="imagenes-primera-pagina">
-              <label htmlFor="file4">Imagen Opcion Agresiva:</label>
-              <input type="file" id="file4" name="file4" value={formValues.file4} onChange={handleChange} />
-            </div>
-          </div>
-
-          <button type="submit">Siguiente</button>
-          <button onClick={handleBack}>Atrás</button>
-        </form>
-      )}
-
-      {/* Agrega más secciones según tus necesidades */}
     </div>
   );
 };
 
 export default CreacionPage;
-
