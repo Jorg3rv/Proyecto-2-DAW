@@ -9,11 +9,6 @@ import PrePartida from '../pages/PrePartida';
 import AgresivaPage from '../pages/AgresivaPage';
 import PasivaPage from '../pages/PasivaPage';
 import CreacionPage from '../pages/CreacionPage';
-import AgresivaEPage from '../pages/AgresivaEPage';
-import PasivaEPage from '../pages/PasivaEPage';
-import VictoriaEPage from '../pages/VictoriaEPage';
-import FracasoEPage from '../pages/FracasoEPage';
-import EquipoPage from '../pages/EquipoPage';
 
 export const router = createBrowserRouter([
     {
@@ -56,26 +51,5 @@ export const router = createBrowserRouter([
     {
         path: '/crear-partida',
         element: <CreacionPage />,
-    }
-    ,
-    {
-        path: '/pasivaE',
-        element: <PasivaEPage />,
-    },
-    {
-        path: '/agresivaE',
-        element: <AgresivaEPage />,
-    },
-    {
-        path: '/victoriaE',
-        element: <VictoriaEPage />,
-    },
-    {
-        path: '/fracasoE',
-        element: <FracasoEPage />,
-    },
-    {
-        path: '/equipo',
-        element: <EquipoPage />,
     }
 ])

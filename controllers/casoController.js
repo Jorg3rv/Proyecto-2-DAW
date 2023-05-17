@@ -2,14 +2,21 @@ const connection = require('../connectionDb');
 
 exports.getCasoById = function (req, res) {
     let idCaso = req.params.id;
-    let query = `SELECT * FROM caso JOIN itinerario_caso ON caso.id_Caso = itinerario_caso.id_caso WHERE id_Itinerario = LAST_INSERT_ID() AND caso.id_caso = ${idCaso}`;
+    let itinerario = req.query.itinerario;
+    console.log('ITINERARIO: ', itinerario);
+    let query = `SELECT * FROM casos JOIN itinerario_caso ON casos.id = itinerario_caso.id_caso WHERE id_itinerario = ${itinerario} AND casos.id = ${idCaso}`;
 
     connection.query(query, (error, results, fields) => {
         if (error) {
             console.error(error);
         } else {
-            console.log('Resultado: ', results);
-            console.log('Query: ', query);
+            res.json({
+                status: 200,
+                data: results,
+            });
         }
     });
 };
+
+
+
