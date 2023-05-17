@@ -1,33 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { shuffleArray } from "../helpers/randomOptions";
 import { CircularProgress } from "@mui/material";
+import { ItinerarioContext } from "../context/ItinerarioContext";
 
 const PasivaPage = () => {
   const [loading, setLoading] = useState(true);
   const [texto, setTexto] = useState(null);
   const [options, setOptions] = useState([]);
+  const { caso } = useContext(ItinerarioContext);
 
   useEffect(() => {
-    (async () => {
-      const { data } = await axios.get(`/api/v1/casos/pasiva/${1}`);
-      console.log("LA DATA ENTERA: ", data.data);
-      setTexto(data.data[0].texto_Redencion_Pasiva);
+    
+      setTexto(caso.texto_Redencion_Pasiva);
       const fields = [
         {
           type: "fracaso",
-          text: data.data[0].texto_Redencion_Mala_Pasiva,
+          text: caso.texto_Redencion_Mala_Pasiva,
         },
         {
           type: "victoria",
-          text: data.data[0].texto_Redencion_Buena_Pasiva,
+          text: caso.texto_Redencion_Buena_Pasiva,
         },
       ];
       const shuffledOptions = shuffleArray(fields);
       setOptions(shuffledOptions);
       setLoading(false);
-    })();
+  
   }, []);
 
   return (

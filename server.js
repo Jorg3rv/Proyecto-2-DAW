@@ -1,7 +1,7 @@
 const express = require('express');
 const connection = require('./connectionDb');
-const profesoresRoutes = require('./routes/profesorRouter');
 const casoRoutes = require('./routes/casoRouter');
+const itinerarioRoutes = require('./routes/itinerarioRoute');
 const path = require('path');
 require('dotenv').config();
 
@@ -29,8 +29,8 @@ if (!port) {
     process.exit(1);
 }
 
-app.use('/api/v1/profesores', profesoresRoutes);
-app.use('/api/v1/casos', casoRoutes);
+app.use('/api/v1/caso', casoRoutes);
+app.use('/api/v1/itinerario', itinerarioRoutes)
 
 app.use(express.static(path.join(__dirname, 'client/build')))
 app.get('*', function (req, res) {
