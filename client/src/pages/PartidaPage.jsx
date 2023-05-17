@@ -68,30 +68,6 @@ const PartidaPage = () => {
             <h2 style={{ color: "white" }}>{caso.texto_intro}</h2>
           </div>
 
-<<<<<<< HEAD
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gap: "1rem",
-            padding: "2rem 4rem",
-            justifyContent: "space-between",
-          }}
-        >
-          {options.map((option,index) => {
-            return (
-              <Link className="links" to={`/${option.type}`}>
-                <button className="mi-btn-caso" 
-                style={{
-                  backgroundImage: `url("/imagen${index+1}.jpg")`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "cover",
-                }}
-                >{option.text}</button>
-              </Link>
-            );
-          })}
-=======
           <div
             style={{
               display: "grid",
@@ -101,15 +77,20 @@ const PartidaPage = () => {
               justifyContent: "space-between",
             }}
           >
-            {options.map((option) => {
+            {options.map((option,index) => {
               return (
                 <Link className="links" to={`/${option.type}`}>
-                  <button className="mi-btn-caso">{option.text}</button>
+                  <button className="mi-btn-caso"
+                    style={{
+                      backgroundImage: `url("/imagen${index+1}.jpg")`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                    }}
+                  >{option.text}</button>
                 </Link>
               );
             })}
           </div>
->>>>>>> a50f0b505e738fac800c623fd03d5a0f4b4de8c5
         </div>
       )}
     </div>
