@@ -11,6 +11,7 @@ export const ItinerarioContextProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        console.log('GETTING ITINERARIO');
         const getItinerario = async () => {
             let { data } = await axios.get("/api/v1/itinerario/last");
             setItinerario(data.data);
@@ -22,6 +23,7 @@ export const ItinerarioContextProvider = ({ children }) => {
         if (itinerario) {
             const getCaso = async () => {
                 console.log(itinerario);
+                console.log('CURRENT CASO: ', currentCaso)
                 let { data } = await axios.get(`/api/v1/caso/${itinerario.idCasos[currentCaso]}?itinerario=${itinerario.idItinerario}`);
 
                 console.log(data.data[0]);
@@ -30,7 +32,7 @@ export const ItinerarioContextProvider = ({ children }) => {
             };
             getCaso();
         }
-    }, [itinerario]);
+    }, [itinerario, currentCaso]);
 
     const data = {
         caso,
