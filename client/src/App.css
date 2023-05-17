@@ -97,9 +97,9 @@
 
 .mi-btn-caso {
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   background-color: black;
-  color: white;
+  color: black;
   padding: 1rem;
   width: -webkit-fill-available;
   height: 100%;
