@@ -11,6 +11,7 @@ const VictoriaPage = () => {
     console.log("ITINERARIO: ", itinerario);
     setCurrentCaso(currentCaso + 1);
     if (currentCaso + 1 == itinerario.idCasos.length) {
+      setCurrentCaso(0);
       navigate("/main");
     } else {
       navigate("/partida");
