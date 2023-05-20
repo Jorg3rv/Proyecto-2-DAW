@@ -34,7 +34,7 @@ const PrePartidaPage = () => {
     </div>
     <button className="mi-btn-menu-pre ">
             <Link className="links" to="/partida">
-              Empecemos
+              ¡Adelante!
             </Link>
           </button>
         </div>

@@ -34,7 +34,12 @@ const MainPage = () => {
           </button>
           <button className="mi-btn-menu ">
             <Link className="links" to="/crear-partida">
-              Crear
+              Crear Caso
+            </Link>
+          </button>
+          <button className="mi-btn-menu ">
+            <Link className="links" to="/crear-itinerario">
+              Crear Itinerario
             </Link>
           </button>
           {/* <button className="mi-btn-start" onClick={testdb}>

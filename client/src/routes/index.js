@@ -9,6 +9,7 @@ import PrePartida from '../pages/PrePartida';
 import AgresivaPage from '../pages/AgresivaPage';
 import PasivaPage from '../pages/PasivaPage';
 import CreacionPage from '../pages/CreacionPage';
+import CreacionItinerarioPage from '../pages/CreacionItinerarioPage';
 
 export const router = createBrowserRouter([
     {
@@ -51,5 +52,9 @@ export const router = createBrowserRouter([
     {
         path: '/crear-partida',
         element: <CreacionPage />,
+    },
+    {
+        path: '/crear-itinerario',
+        element: <CreacionItinerarioPage />,
     }
 ])
