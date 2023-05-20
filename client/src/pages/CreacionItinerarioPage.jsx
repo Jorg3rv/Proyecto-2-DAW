@@ -9,7 +9,7 @@ const CreacionItinerarioPage = () => {
 
   useEffect(() => {
     axios
-      .get('http://54.88.52.250/api/v1/caso/pedir')
+      .get('http://54.88.52.250/api/v1/casos/pedir')
       .then(response => {
         setOptions(response.data);
       })
@@ -50,13 +50,13 @@ const CreacionItinerarioPage = () => {
         onChange={e => setTextInput(e.target.value)}
       />
 
-      <select
+<select
         value={selectedOption}
         onChange={e => setSelectedOption(e.target.value)}
       >
         {options.map(option => (
           <option key={option.id} value={option.id}>
-            {option.label}
+            {option.nombre}
           </option>
         ))}
       </select>
