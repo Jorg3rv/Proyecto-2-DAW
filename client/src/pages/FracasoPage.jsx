@@ -18,9 +18,19 @@ const FracasoPage = () => {
   };
 
   return (
-    <div>
-      <h1 className="titulo">No has conseguido las botas de la amistad</h1>
-      <button onClick={handleContinuar} className="mi-btn-caso-redencion">
+    <div style={{
+      backgroundImage: `url("/FAIL.jpg")`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-evenly",
+      alignItems: "center",
+      height: "100vh",
+    }}>
+      <h1 className="titulo-final">NO HAS CONSEGUIDO LAS BOTAS DE LA AMISTAD</h1>
+
+      <button onClick={handleContinuar} className="mi-btn-infantil">
         Continuemos
       </button>
     </div>

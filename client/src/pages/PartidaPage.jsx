@@ -55,41 +55,66 @@ const PartidaPage = () => {
       {loading ? (
         <CircularProgress />
       ) : (
-        <div className="recuadro">
-          <div
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <h1
             style={{
-              display: "flex",
-              padding: "2rem 4rem",
-              gap: "1rem",
-              flexDirection: "column",
-            }}
-            className="opciones"
-          >
-            <h2 style={{ color: "white" }}>{caso.texto_intro}</h2>
-          </div>
+              color: "white",
+              // backgroundColor: "blue",
+              padding: "20px",
+              textAlign: "center",
+              textTransform: "uppercase",
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: "1rem",
-              padding: "2rem 4rem",
-              justifyContent: "space-between",
             }}
           >
-            {options.map((option,index) => {
-              return (
-                <Link className="links" to={`/${option.type}`}>
-                  <button className="mi-btn-caso"
-                    style={{
-                      backgroundImage: `url("/imagen${index+1}.jpg")`,
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "cover",
-                    }}
-                  >{option.text}</button>
-                </Link>
-              );
-            })}
+            {caso.nombre}
+          </h1>
+
+          <div className="recuadro">
+            <div
+              style={{
+                display: "flex",
+                padding: "2rem 4rem",
+                gap: "1rem",
+                flexDirection: "column",
+              }}
+              className="opciones"
+            >
+              <h2 style={{ color: "white" }}>{caso.texto_intro}</h2>
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, 1fr)",
+                gap: "1rem",
+                padding: "2rem 4rem",
+                justifyContent: "space-between",
+              }}
+            >
+              {options.map((option, index) => {
+                return (
+                  <Link className="links" to={`/${option.type}`}>
+                    <button
+                      className="mi-btn-caso"
+                      style={{
+                        backgroundImage: `url("/imagen${index + 1}.jpg")`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                      }}
+                    >
+                      {option.text}
+                    </button>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </div>
       )}
