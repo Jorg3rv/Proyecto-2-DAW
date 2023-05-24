@@ -34,7 +34,7 @@ const AgresivaPage = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundImage: `url("/tormenta.jpg")`,
+        backgroundImage: `url("http://44.205.198.225/imagenes/${caso.imagen_Redencion_Agresiva}")`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}

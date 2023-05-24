@@ -16,18 +16,22 @@ const PartidaPage = () => {
         {
           type: "agresiva",
           text: caso.texto_Opcion_Agresiva,
+          img:caso.imagen_Opcion_Agresiva,
         },
         {
           type: "victoria",
           text: caso.texto_Opcion_Avanzada,
+          img:caso.imagen_Opcion_Avanzada,
         },
         {
           type: "victoria",
           text: caso.texto_Opcion_Basica,
+          img:caso.imagen_Opcion_Basica,
         },
         {
           type: "pasiva",
           text: caso.texto_Opcion_Pasiva,
+          img:caso.imagen_Opcion_Pasiva,
         },
       ];
       const shuffledOptions = shuffleArray(fields);
@@ -104,7 +108,7 @@ const PartidaPage = () => {
                     <button
                       className="mi-btn-caso"
                       style={{
-                        backgroundImage: `url("/imagen${index + 1}.jpg")`,
+                        backgroundImage: `url("http://44.205.198.225/imagenes/${option.img}")`,
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
                       }}

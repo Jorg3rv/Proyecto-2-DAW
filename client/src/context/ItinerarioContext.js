@@ -31,7 +31,7 @@ export const ItinerarioContextProvider = ({ children }) => {
                     console.log('CURRENT CASO: ', currentCaso)
                     const { data } = await axios.get(`http://54.88.52.250/api/v1/caso/${itinerario.idCasos[currentCaso]}?itinerario=${itinerario.idItinerario}`);
     
-                    console.log(data[0]);
+                    console.log(data);
                     setCaso(data[0]);
                     setLoading(false);
                 } catch (error) {
