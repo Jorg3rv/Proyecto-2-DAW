@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { ItinerarioContext } from "../context/ItinerarioContext";
 
 const LoginPage = () => {
+  const { setCurrentProfesor } = useContext(ItinerarioContext);
+  const navigate = useNavigate();
   const validationSchema = yup.object({
     email: yup
       .string()
@@ -20,9 +25,27 @@ const LoginPage = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log(values);
+      checkLogin(values);
     },
   });
+
+  const checkLogin = async (values) => {
+    try {
+      const password = values.password;
+      const email = values.email;
+
+      const { data } = await axios.get(
+        `/api/v1/login?email=${email}&password=${password}`
+      );
+
+      if (data.status === 200) {
+        localStorage.setItem("username_profe", data.data?.name);
+        navigate("/main");
+      }
+    } catch (error) {
+      console.log("ERROR AL LOGUEARSE: ", error);
+    }
+  };
 
   return (
     <div
@@ -111,17 +134,11 @@ const LoginPage = () => {
           </form>
         </Box>
       </div>
-      <Link className="links" to="/main">
-      <button className="mi-btn-start">
-            
-              Iniciar Juego
-            
-          </button>
-          </Link>
+      {/* <Link className="links" to="/main">
+        <button className="mi-btn-start">Iniciar Juego</button>
+      </Link> */}
     </div>
-    
   );
 };
 
 export default LoginPage;
-

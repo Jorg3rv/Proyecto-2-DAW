@@ -5,6 +5,7 @@ import React, { createContext, useEffect, useState } from 'react';
 export const ItinerarioContext = createContext();
 
 export const ItinerarioContextProvider = ({ children }) => {
+    const [currentProfesor, setCurrentProfesor] = useState(null); // [idProfesor, setIdProfesor
     const [caso, setCaso] = useState(null);
     const [itinerario, setItinerario] = useState(null);
     const [currentCaso, setCurrentCaso] = useState(0);
@@ -30,9 +31,10 @@ export const ItinerarioContextProvider = ({ children }) => {
                     console.log(itinerario);
                     console.log('CURRENT CASO: ', currentCaso)
                     const { data } = await axios.get(`http://54.88.52.250/api/v1/caso/${itinerario.idCasos[currentCaso]}?itinerario=${itinerario.idItinerario}`);
-    
+
                     console.log(data);
                     setCaso(data[0]);
+                    setLoading(false);
                     setLoading(false);
                 } catch (error) {
                     console.error('Error al obtener el caso1:', error);
@@ -42,6 +44,10 @@ export const ItinerarioContextProvider = ({ children }) => {
         }
     }, [itinerario, currentCaso]);
 
+
+
+
+
     useEffect(() => {
         if (itinerario && currentCaso >= 0 && currentCaso < itinerario.idCasos.length) {
             getCaso();
@@ -49,23 +55,23 @@ export const ItinerarioContextProvider = ({ children }) => {
     }, [currentCaso]);
 
     const getCaso = async () => {
-    try {
-        console.log(itinerario);
-        console.log('CURRENT CASO: ', currentCaso);
-       
-        const { data } = await axios.get(`http://54.88.52.250/api/v1/caso/${itinerario.idCasos[currentCaso]}?itinerario=${itinerario.idItinerario}`);
+        try {
+            console.log(itinerario);
+            console.log('CURRENT CASO: ', currentCaso);
 
-        if (data.data?.length > 0) {
-            console.log(data[0]);
-            setCaso(data[0]);
-            setLoading(false);
-        } else {
-            console.error('No se encontró el caso');
+            const { data } = await axios.get(`http://54.88.52.250/api/v1/caso/${itinerario.idCasos[currentCaso]}?itinerario=${itinerario.idItinerario}`);
+
+            if (data.data?.length > 0) {
+                console.log(data[0]);
+                setCaso(data[0]);
+                setLoading(false);
+            } else {
+                console.error('No se encontró el caso');
+            }
+        } catch (error) {
+            console.error('Error al obtener el caso2:', error);
         }
-    } catch (error) {
-        console.error('Error al obtener el caso2:', error);
-    }
-};
+    };
 
     const data = {
         caso,
@@ -73,7 +79,9 @@ export const ItinerarioContextProvider = ({ children }) => {
         currentCaso,
         setCurrentCaso,
         itinerario,
-        setItinerario
+        setItinerario,
+        currentProfesor,
+        setCurrentProfesor,
     };
 
     return loading ? (

@@ -14,47 +14,43 @@ import CreacionItinerarioPage from '../pages/CreacionItinerarioPage';
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <ProtectedRoute component={<LoginPage />} />,
-    },
-    {
-        path: '/main',
-        element: <MainPage />,
-    },
-    {
-        path: '/login',
         element: <LoginPage />,
     },
     {
+        path: '/main',
+        element: <ProtectedRoute component={<MainPage />} />,
+    },
+    {
         path: '/partida',
-        element: <PartidaPage />,
+        element: <ProtectedRoute component={<PartidaPage />} />,
     },
     {
         path: '/fracaso',
-        element: <FracasoPage />,
+        element: <ProtectedRoute component={<FracasoPage />} />,
     },
     {
         path: '/victoria',
-        element: <VictoriaPage />,
+        element: <ProtectedRoute component={<VictoriaPage />} />,
     }
     ,
     {
         path: '/prePartida',
-        element: <PrePartida />,
+        element: <ProtectedRoute component={<PrePartida />} />,
     },
     {
         path: '/agresiva',
-        element: <AgresivaPage />,
+        element: <ProtectedRoute component={<AgresivaPage />} />,
     },
     {
         path: '/pasiva',
-        element: <PasivaPage />,
+        element: <ProtectedRoute component={<PasivaPage />} />,
     },
     {
         path: '/crear-partida',
-        element: <CreacionPage />,
+        element: <ProtectedRoute component={<CreacionPage />} />,
     },
     {
         path: '/crear-itinerario',
-        element: <CreacionItinerarioPage />,
+        element: <ProtectedRoute component={<CreacionItinerarioPage />} />,
     }
 ])

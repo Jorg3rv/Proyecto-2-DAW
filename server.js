@@ -1,7 +1,9 @@
 const express = require('express');
+const session = require('express-session');
 const connection = require('./connectionDb');
 const casoRoutes = require('./routes/casoRouter');
 const itinerarioRoutes = require('./routes/itinerarioRoute');
+const loginRoutes = require('./routes/loginRoute');
 const path = require('path');
 require('dotenv').config();
 
@@ -22,6 +24,12 @@ connection.connect(function (error) {
 
 const app = express();
 
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false
+}));
+
 const port = process.env.PORT || 5000;
 
 if (!port) {
@@ -31,6 +39,7 @@ if (!port) {
 
 app.use('/api/v1/caso', casoRoutes);
 app.use('/api/v1/itinerario', itinerarioRoutes)
+app.use('/api/v1/login', loginRoutes)
 
 app.use(express.static(path.join(__dirname, 'client/build')))
 app.get('*', function (req, res) {

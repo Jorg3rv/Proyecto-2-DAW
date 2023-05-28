@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 import axios from "axios";
-import { shuffleArray } from "../helpers/randomOptions";
+import { shuffleArray } from "../helpers/utils";
 import { ItinerarioContext } from "../context/ItinerarioContext";
 
 const PartidaPage = () => {
@@ -16,22 +16,22 @@ const PartidaPage = () => {
         {
           type: "agresiva",
           text: caso.texto_Opcion_Agresiva,
-          img:caso.imagen_Opcion_Agresiva,
+          img: caso.imagen_Opcion_Agresiva,
         },
         {
           type: "victoria",
           text: caso.texto_Opcion_Avanzada,
-          img:caso.imagen_Opcion_Avanzada,
+          img: caso.imagen_Opcion_Avanzada,
         },
         {
           type: "victoria",
           text: caso.texto_Opcion_Basica,
-          img:caso.imagen_Opcion_Basica,
+          img: caso.imagen_Opcion_Basica,
         },
         {
           type: "pasiva",
           text: caso.texto_Opcion_Pasiva,
-          img:caso.imagen_Opcion_Pasiva,
+          img: caso.imagen_Opcion_Pasiva,
         },
       ];
       const shuffledOptions = shuffleArray(fields);
@@ -74,7 +74,6 @@ const PartidaPage = () => {
               padding: "20px",
               textAlign: "center",
               textTransform: "uppercase",
-
             }}
           >
             {caso.nombre}
