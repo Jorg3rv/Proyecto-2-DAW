@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const CreacionPage = () => {
-  const [intros, setIntro] = useState(true);
-  const [mostrarBasico, setMostrarBasico] = useState(false);
-  const [mostrarRedenciones, setMostrarRedenciones] = useState(false);
   let id_valor='';
   let  nombre='';
   let  texto_intro='';
