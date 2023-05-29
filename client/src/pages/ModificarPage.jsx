@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const CreacionPage = () => {
-  const [intros, setIntro] = useState(true);
-  const [mostrarBasico, setMostrarBasico] = useState(false);
-  const [mostrarRedenciones, setMostrarRedenciones] = useState(false);
+const ModificarPage = () => {
   let id_valor='';
   let  nombre='';
   let  texto_intro='';
@@ -94,7 +91,7 @@ const CreacionPage = () => {
 
 
    await axios 
-      .post('http://54.88.52.250/api/v1/caso/insertar', formData,config)
+      .post('', formData,config)
       .then((response) => {
         console.log(response.data); // Manejar la respuesta del servidor
       })
@@ -174,4 +171,4 @@ const CreacionPage = () => {
   );
 };
 
-export default CreacionPage;
+export default ModificarPage;

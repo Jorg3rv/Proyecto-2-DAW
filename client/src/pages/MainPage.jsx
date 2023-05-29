@@ -66,10 +66,16 @@ const MainPage = () => {
               </Link>
             </button>
             <button className="mi-btn-menu ">
+              <Link className="links" to="/modificar-partida">
+                Modificar caso
+              </Link>
+            </button>
+            <button className="mi-btn-menu ">
               <Link className="links" to="/crear-itinerario">
                 Crear Itinerario
               </Link>
             </button>
+
             {/* <button className="mi-btn-start" onClick={testdb}>
             Consulta
           </button> */}

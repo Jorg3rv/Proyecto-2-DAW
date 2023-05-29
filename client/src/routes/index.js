@@ -10,6 +10,8 @@ import AgresivaPage from '../pages/AgresivaPage';
 import PasivaPage from '../pages/PasivaPage';
 import CreacionPage from '../pages/CreacionPage';
 import CreacionItinerarioPage from '../pages/CreacionItinerarioPage';
+import ModificarPage from '../pages/ModificarPage';
+
 
 export const router = createBrowserRouter([
     {
@@ -52,5 +54,9 @@ export const router = createBrowserRouter([
     {
         path: '/crear-itinerario',
         element: <ProtectedRoute component={<CreacionItinerarioPage />} />,
+    },
+    {
+        path: '/modificar-partida',
+        element: <ProtectedRoute component={<ModificarPage />} />,
     }
 ])
