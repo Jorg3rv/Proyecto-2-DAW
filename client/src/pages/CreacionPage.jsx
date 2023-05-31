@@ -61,9 +61,9 @@ const CreacionPage = () => {
     const opcionesIntro = document.getElementsByClassName("opcionesIntro")[0];
     opcionesIntro.style.display = "none";
 
-    const id_valor = document.getElementsByName("id_valor")[0].value;
-    const nombre = document.getElementsByName("nombre")[0].value;
-    const texto_intro = document.getElementsByName("texto_intro")[0].value;
+     id_valor = document.getElementsByName("id_valor")[0].value;
+     nombre = document.getElementsByName("nombre")[0].value;
+     texto_intro = document.getElementsByName("texto_intro")[0].value;
   };
 
   const redenciones = () => {
