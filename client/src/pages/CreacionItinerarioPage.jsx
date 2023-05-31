@@ -20,13 +20,14 @@ const CreacionItinerarioPage = () => {
 
   const handleAdd = () => {
     setHiddenInput(prevHiddenInput => [...prevHiddenInput, selectedOption]);
+    document.getElementsByClassName('casos_añadidos')[0].innerHTML+='<div>'+document.getElementsByTagName('select')[0].selectedOptions[0].text+'</div>';
   };
 
-  const handleSubmit = () => {
-    axios
-      .post('/v1/itinerario', {
-        textInput,
-        hiddenInput
+  const handleSubmit = async () => {
+   await axios
+      .post('http://18.233.219.179/api/v1/itinerario/insertar', {
+        nombre:textInput,
+        array:hiddenInput
       })
       .then(response => {
         // Realizar acciones adicionales si es necesario
@@ -44,13 +45,13 @@ const CreacionItinerarioPage = () => {
 
   return (
     <div>
-      <input
+     <label>Nombre del Itinerario</label> <input
         type="text"
         value={textInput}
         onChange={e => setTextInput(e.target.value)}
       />
 
-<select
+<label>Caso a añadir</label><select
         value={selectedOption}
         onChange={e => setSelectedOption(e.target.value)}
       >
@@ -61,7 +62,9 @@ const CreacionItinerarioPage = () => {
         ))}
       </select>
 
-      <button onClick={handleAdd}>Añadir</button>
+      <button onClick={handleAdd}>Añadir</button><br></br>
+
+      <label>Casos añadidos al Itinerario:</label><div className='casos_añadidos'></div>
 
       {hiddenInput.map((option, index) => (
         <input type="hidden" key={index} value={option} />
