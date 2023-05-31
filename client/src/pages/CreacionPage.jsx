@@ -61,9 +61,9 @@ const CreacionPage = () => {
     const opcionesIntro = document.getElementsByClassName("opcionesIntro")[0];
     opcionesIntro.style.display = "none";
 
-     id_valor = document.getElementsByName("id_valor")[0].value;
-     nombre = document.getElementsByName("nombre")[0].value;
-     texto_intro = document.getElementsByName("texto_intro")[0].value;
+    id_valor = document.getElementsByName("id_valor")[0].value;
+    nombre = document.getElementsByName("nombre")[0].value;
+    texto_intro = document.getElementsByName("texto_intro")[0].value;
   };
 
   const redenciones = () => {
@@ -236,10 +236,18 @@ const CreacionPage = () => {
           <input type="file" name="imagenPasiva" />
           <label>Imagen Opcion Agresiva</label>
           <input type="file" name="imagenAgresiva" />
-          <button type="button" onClick={cambiarIntro}>
+          <button
+            style={{ marginTop: "1rem", width: "50%", alignSelf: "center" }}
+            type="button"
+            onClick={cambiarIntro}
+          >
             Atrás
           </button>
-          <button type="button" onClick={redenciones}>
+          <button
+            style={{ marginTop: "1rem", width: "50%", alignSelf: "center" }}
+            type="button"
+            onClick={redenciones}
+          >
             Siguiente
           </button>
         </div>
@@ -261,10 +269,19 @@ const CreacionPage = () => {
           <input type="file" name="imagenRedencionPasiva" />
           <label>Imagen Redencion Agresiva</label>
           <input type="file" name="imagenRedencionAgresiva" />
-          <button type="button" onClick={cambiarBasicos}>
+          <button
+            style={{ padding: "1rem", width: "50%", alignSelf: "center" }}
+            type="button"
+            onClick={cambiarBasicos}
+          >
             Atrás
           </button>
-          <button type="submit">Crear</button>
+          <button
+            style={{ padding: "1rem", width: "50%", alignSelf: "center" }}
+            type="submit"
+          >
+            Crear
+          </button>
         </div>
       </form>
       <div className="datos"></div>

@@ -197,7 +197,7 @@
 }
 
 .mi-btn-caso-redencion {
-  font-size: 14px;
+  font-size: 24px;
   background-color: black;
   color: white;
   padding: 1rem;
@@ -249,6 +249,7 @@ justify-items: start;
   position: relative;
   display: inline-block;
   padding: 10px;
+  font-size: 20px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -268,6 +269,7 @@ justify-items: start;
 .dialogue-bubble-right {
   position: relative;
   display: inline-block;
+  font-size: 20px;
   padding: 10px;
   background-color: #fff;
   border-radius: 10px;

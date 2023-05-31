@@ -116,7 +116,7 @@ const PasivaPage = () => {
                   }}
                 >
                   <Bocata texto={texto} className="dialogue-bubble-right" />
-                  <p style={{ color: "white" }}>Alumno</p>
+                  <p style={{ color: "white", }}>Alumno</p>
                 </div>
               ))}
             </div>
