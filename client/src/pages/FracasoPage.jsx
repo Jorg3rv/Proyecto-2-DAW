@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ItinerarioContext } from "../context/ItinerarioContext";
 const FracasoPage = () => {
   const navigate = useNavigate();
+  const { caso } = useContext(ItinerarioContext);
   const { setCurrentCaso, currentCaso, itinerario } =
     useContext(ItinerarioContext);
 
@@ -19,7 +20,7 @@ const FracasoPage = () => {
 
   return (
     <div style={{
-      backgroundImage: `url("/FAIL.jpg")`,
+      backgroundImage: `url("http://44.205.198.225/imagenes/${caso.imagen_fracaso}")`,
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
       display: "flex",
@@ -28,7 +29,7 @@ const FracasoPage = () => {
       alignItems: "center",
       height: "100vh",
     }}>
-      <h1 className="titulo-final">NO HAS CONSEGUIDO LAS BOTAS DE LA AMISTAD</h1>
+      <h1 className="titulo-final">NO HAS CONSEGUIDO {caso.recompensa}</h1>
 
       <button onClick={handleContinuar} className="mi-btn-infantil">
         Continuemos

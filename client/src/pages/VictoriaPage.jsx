@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const VictoriaPage = () => {
   const navigate = useNavigate();
+  const { caso } = useContext(ItinerarioContext);
   const { setCurrentCaso, currentCaso, itinerario } =
     useContext(ItinerarioContext);
 
@@ -20,7 +21,7 @@ const VictoriaPage = () => {
 
   return (
     <div style={{
-      backgroundImage: `url("/ENHORABUENA.jpg")`,
+      backgroundImage: `url("http://44.205.198.225/imagenes/${caso.imagen_recompensa}")`,
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
       display: "flex",
@@ -29,7 +30,7 @@ const VictoriaPage = () => {
       alignItems: "center",
       height: "100vh",
     }}>
-      <h1 className="titulo-final">HAS CONSEGUIDO LAS BOTAS DE LA AMISTAD</h1>
+      <h1 className="titulo-final">HAS CONSEGUIDO {caso.recompensa}</h1>
 
       <button onClick={handleContinuar} className="mi-btn-infantil">
         Continuemos
