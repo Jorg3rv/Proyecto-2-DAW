@@ -61,18 +61,8 @@ const MainPage = () => {
               </Link>
             </button>
             <button className="mi-btn-menu ">
-              <Link className="links" to="/crear-partida">
-                Crear Caso
-              </Link>
-            </button>
-            <button className="mi-btn-menu ">
-              <Link className="links" to="/modificar-partida">
-                Modificar caso
-              </Link>
-            </button>
-            <button className="mi-btn-menu ">
-              <Link className="links" to="/crear-itinerario">
-                Crear Itinerario
+              <Link className="links" to="/gestionar">
+                Gestionar
               </Link>
             </button>
 

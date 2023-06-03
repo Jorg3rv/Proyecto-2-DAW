@@ -19,10 +19,12 @@ const AgresivaPage = () => {
       {
         type: "fracaso",
         text: caso.texto_Redencion_Mala_Agresiva,
+        name: "agresiva_reden_buena",
       },
       {
         type: "victoria",
         text: caso.texto_Redencion_Buena_Agresiva,
+        name: "agresiva_reden_mala",
       },
     ];
     const shuffledOptions = shuffleArray(fields);

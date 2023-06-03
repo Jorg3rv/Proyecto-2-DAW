@@ -11,6 +11,7 @@ import PasivaPage from '../pages/PasivaPage';
 import CreacionPage from '../pages/CreacionPage';
 import CreacionItinerarioPage from '../pages/CreacionItinerarioPage';
 import ModificarPage from '../pages/ModificarPage';
+import GestionPage from '../pages/GestionPage';
 
 
 export const router = createBrowserRouter([
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
     {
         path: '/main',
         element: <ProtectedRoute component={<MainPage />} />,
+    },
+    {
+        path: '/gestionar',
+        element: <ProtectedRoute component={<GestionPage />} />,
     },
     {
         path: '/partida',

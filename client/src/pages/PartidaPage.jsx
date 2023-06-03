@@ -17,16 +17,19 @@ const PartidaPage = () => {
           type: "agresiva",
           text: caso.texto_Opcion_Agresiva,
           img: caso.imagen_Opcion_Agresiva,
+          
         },
         {
           type: "victoria",
           text: caso.texto_Opcion_Avanzada,
           img: caso.imagen_Opcion_Avanzada,
+          name: "avanzada"
         },
         {
           type: "victoria",
           text: caso.texto_Opcion_Basica,
           img: caso.imagen_Opcion_Basica,
+          name: "basica"
         },
         {
           type: "pasiva",
@@ -102,6 +105,7 @@ const PartidaPage = () => {
               }}
             >
               {options.map((option, index) => {
+                console.log("OPTION: ", option);
                 return (
                   <Link className="links" to={`/${option.type}`}>
                     <button
@@ -112,7 +116,9 @@ const PartidaPage = () => {
                         backgroundSize: "cover",
                       }}
                     >
-                      {option.text}
+                      <div style={{
+                        backgroundColor: "rgba(255,255,255,0.8)",
+                      }}>{option.text}</div>
                     </button>
                   </Link>
                 );

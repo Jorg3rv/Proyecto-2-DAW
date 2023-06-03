@@ -20,17 +20,25 @@ const VictoriaPage = () => {
   };
 
   return (
-    <div style={{
-      backgroundImage: `url("http://44.205.198.225/imagenes/${caso.imagen_recompensa}")`,
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-evenly",
-      alignItems: "center",
-      height: "100vh",
-    }}>
-      <h1 className="titulo-final">HAS CONSEGUIDO {caso.recompensa}</h1>
+    <div
+      style={{
+        backgroundImage: `url("http://44.205.198.225/imagenes/${caso.imagen_recompensa}")`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: "rgba(255,255,255,0.8)",
+        }}
+      >
+        <h1 className="titulo-final">HAS CONSEGUIDO {caso.recompensa}</h1>
+      </div>
 
       <button onClick={handleContinuar} className="mi-btn-infantil">
         Continuemos

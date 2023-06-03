@@ -49,11 +49,15 @@ const CreacionItinerarioPage = () => {
   return (
     <div
       style={{
+        height: "100vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
-        color: "white",
+        flexDirection: "column",
+        backgroundImage: `url("/img1.jpg")`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        gap: "1rem",
       }}
     >
       <div

@@ -21,10 +21,12 @@ const PasivaPage = () => {
       {
         type: "fracaso",
         text: caso.texto_Redencion_Mala_Pasiva,
+        name: "pasiva_reden_mala",
       },
       {
         type: "victoria",
         text: caso.texto_Redencion_Buena_Pasiva,
+        name: "pasiva_reden_buena",
       },
     ];
     const shuffledOptions = shuffleArray(fields);
@@ -116,7 +118,7 @@ const PasivaPage = () => {
                   }}
                 >
                   <Bocata texto={texto} className="dialogue-bubble-right" />
-                  <p style={{ color: "white", }}>Alumno</p>
+                  <p style={{ color: "white" }}>Alumno</p>
                 </div>
               ))}
             </div>

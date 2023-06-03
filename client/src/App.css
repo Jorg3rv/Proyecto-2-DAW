@@ -45,7 +45,50 @@
   text-transform: uppercase;
   text-align: center;
   font-size: 42px !important;
-  text-shadow: 5px 5px 0px #e6c924;
+  /* text-shadow: 5px 5px 0px #e6c924; */
+}
+
+label {
+  color: white;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+input {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  padding: 0.5rem;
+  font-size: 20px;
+  color: #000;
+}
+
+select {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  padding: 0.5rem;
+  font-size: 20px;
+  color: #000;
+}
+
+.button-gestion {
+  background-color: #00c271;
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  font-size: 20px;
+  color: #000;
+  cursor: pointer;
+}
+
+textarea {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  padding: 1rem;
+  font-size: 20px;
+  color: #000;
 }
 
 .titulo-valores {
@@ -189,7 +232,6 @@
   top: 40px;
 }
 
-
 .osito {
   width: 15%;
   height: auto;
@@ -287,3 +329,46 @@ justify-items: start;
   border-color: transparent transparent transparent #fff;
 }
 
+@media (max-width: 768px) {
+  /* Estilos para resoluciones de pantalla menores o iguales a 768px */
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  img {
+    padding-left: 1rem;
+    width: 100%;
+  }
+
+  form {
+    height: auto;
+  }
+
+  Button {
+    position: static;
+    margin-top: 1rem;
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Estilos para resoluciones de pantalla menores o iguales a 480px */
+  Box {
+    width: 90%;
+  }
+
+  div {
+    margin-top: 1rem;
+  }
+
+  h1.title-login {
+    font-size: 1.5rem;
+  }
+
+  TextField {
+    width: 100%;
+  }
+}
