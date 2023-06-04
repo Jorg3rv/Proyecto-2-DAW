@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { CircularProgress } from "@mui/material";
 
 const ModificarPage = () => {
   let id_valor = "";
@@ -15,14 +16,17 @@ const ModificarPage = () => {
   let texto_Redencion_Agresiva = "";
   let texto_Redencion_Buena_Agresiva = "";
   let texto_Redencion_Mala_Agresiva = "";
-  let imagenBasica = null;
-  let imagenAvanzada = null;
-  let imagenAgresiva = null;
-  let imagenPasiva = null;
-  let imagenRedencionPasiva = null;
-  let imagenRedencionAgresiva = null;
+
   const [options, setOptions] = useState([]);
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [currentCaso, setCurrentCaso] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [imagenAvanzada, setImagenAvanzada] = useState(null);
+  const [imagenBasica, setImagenBasica] = useState(null);
+  const [imagenAgresiva, setImagenAgresiva] = useState(null);
+  const [imagenPasiva, setImagenPasiva] = useState(null);
+  const [imagenRedencionPasiva, setImagenRedencionPasiva] = useState(null);
+  const [imagenRedencionAgresiva, setImagenRedencionAgresiva] = useState(null);
 
   useEffect(() => {
     axios
@@ -35,31 +39,46 @@ const ModificarPage = () => {
       });
   }, []);
 
-const datosCasoCambiar = async(id) =>{
-console.log(id);
-await axios.post('http://54.88.52.250/api/v1/caso/elegido', {
-  id: id
-})
-.then((response) =>{
-console.log(response.data[0]);
- id_valor = response.data[0].id_valor;
- nombre = response.data[0].nombre;
- texto_intro = response.data[0].texto_intro;
- texto_Opcion_Basica = response.data[0].texto_Opcion_Basica;
- texto_Opcion_Avanzada = response.data[0].texto_Opcion_Avanzada;
- texto_Opcion_Pasiva = response.data[0].texto_Opcion_Pasiva;
- texto_Opcion_Agresiva = response.data[0].texto_Opcion_Agresiva;
- texto_Redencion_Pasiva = response.data[0].texto_Redencion_Pasiva;
- texto_Redencion_Buena_Pasiva = response.data[0].texto_Redencion_Buena_Pasiva;
- texto_Redencion_Mala_Pasiva = response.data[0].texto_Redencion_Mala_Pasiva;
- texto_Redencion_Agresiva = response.data[0].texto_Redencion_Agresiva;
- texto_Redencion_Buena_Agresiva = response.data[0].texto_Redencion_Buena_Agresiva;
- texto_Redencion_Mala_Agresiva = response.data[0].texto_Redencion_Mala_Agresiva;
-})
+  useEffect(() => {
+    if (options) {
+      setSelectedOption(options[0]?.id);
+    }
+  }, [options]);
 
+  useEffect(() => {
+    if (selectedOption) {
+      (async () => {
+        const casoData = await axios.post(
+          "http://54.88.52.250/api/v1/caso/elegido",
+          {
+            id: selectedOption,
+          }
+        );
+        setCurrentCaso(casoData.data[0]);
+        setLoading(false);
+        console.log("CASO DATA: ", casoData.data[0]);
+      })();
+    }
+  }, [selectedOption]);
 
-}
+  useEffect(() => {
+    if (!currentCaso) return;
+    axios
+      .get(
+        `http://44.205.198.225/imagenes/${currentCaso.imagen_Opcion_Avanzada}`
+      )
+      .then((response) => {
+        console.log("IMAGENES: ", response.data);
+        setImagenAvanzada(response.data);
+      })
+      .catch((error) => {
+        console.error("ERROR AL TRAER LAS IMAGENES: ", error); // Manejar errores
+      });
+  }, [currentCaso]);
 
+  const datosCasoCambiar = async (id) => {
+    setSelectedOption(id);
+  };
 
   const cambiarIntro = () => {
     document.getElementsByClassName("opcionesBasicas")[0].style.display =
@@ -203,211 +222,371 @@ console.log(response.data[0]);
   };
 
   return (
-
     <div
       style={{
+        height: "100vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
-        color: "white",
+        flexDirection: "column",
+        backgroundImage: `url("/img1.jpg")`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        gap: "1rem",
       }}
     >
-        <select
-          value={selectedOption}
-          onChange={(event) => datosCasoCambiar(event.target.value)}>
-          {options.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.nombre}
-            </option>
-          ))}
-        </select>
-      <form onSubmit={handleSubmit}>
-        <div
-          className="opcionesIntro"
-          style={{
-            gap: ".5rem",
-            display: "flex",
-            flexDirection: "column",
-            width: "500px",
-            border: "4px solid #00ff93",
-            borderRadius: "25px",
-            backgroundColor: "rgba(0, 0, 0, 0.9)",
-            padding: "2rem",
-          }}
-        >
-          <label>Texto de introducción</label>
-          <textarea name="texto_intro" placeholder="Texto Intro"  />
-          <label>Valor</label>
-          <select name="id_valor" >
-            <option value="1">Amistad</option>
-            <option value="2">Trabajo en equipo</option>
-            <option value="3">Justicia</option>
-            <option value="4">Tolerancia</option>
-            <option value="5">Bondad</option>
-          </select>
-          <label>Nombre</label>
-          <input type="text" name="nombre" />
-          <button className="button-gestion" onClick={cambiarBasicos}>
-            Siguiente
-          </button>
+      {loading ? (
+        <div>
+          <CircularProgress />
         </div>
-
-        <div className="opcionesBasicas" style={{ display: "none" }}>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "45%" }}
-            >
-              <label>Texto Opcion Basica</label>
-              <input type="text" name="texto_Opcion_Basica" />
-            </div>
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "45%" }}
-            >
-              <label>Texto Opcion Avanzada</label>
-              <input type="text" name="texto_Opcion_Avanzada" />
-            </div>
-          </div>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "45%" }}
-            >
-              <label>Texto Opcion Pasiva</label>
-              <input type="text" name="texto_Opcion_Pasiva" />
-            </div>
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "45%" }}
-            >
-              <label>Texto Opcion Agresiva</label>
-              <input type="text" name="texto_Opcion_Agresiva" />
-            </div>
-          </div>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "45%" }}
-            >
-              <label>Imagen Opcion Basica</label>
-              <input type="file" name="imagenBasica" />
-            </div>
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "45%" }}
-            >
-              <label>Imagen Opcion Avanzada</label>
-              <input type="file" name="imagenAvanzada" />
-            </div>
-          </div>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "45%" }}
-            >
-              <label>Imagen Opcion Pasiva</label>
-              <input type="file" name="imagenPasiva" />
-            </div>
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "45%" }}
-            >
-              <label>Imagen Opcion Agresiva</label>
-              <input type="file" name="imagenAgresiva" />
-            </div>
-          </div>
-          <div style={{ display: "flex", gap: "1rem", paddingTop: "1rem" }}>
+      ) : (
+        <>
+          <div
+            className="opcionesIntro"
+            style={{
+              gap: ".5rem",
+              display: "flex",
+              flexDirection: "column",
+              width: "500px",
+              border: "4px solid #00ff93",
+              borderRadius: "25px",
+              backgroundColor: "rgba(0, 0, 0, 0.9)",
+              padding: "2rem",
+            }}
+          >
+            <select onChange={(event) => datosCasoCambiar(event.target.value)}>
+              {options.map((option) => (
+                <option key={option.id} value={option.id}>
+                  {option.nombre}
+                </option>
+              ))}
+            </select>
             <button
-              style={{ marginTop: "1rem", width: "50%", alignSelf: "center" }}
+              type="button"
               className="button-gestion"
-              onClick={cambiarIntro}
-            >
-              Atrás
-            </button>
-            <button
-              style={{ marginTop: "1rem", width: "50%", alignSelf: "center" }}
-              className="button-gestion"
-              onClick={redenciones}
+              onClick={cambiarBasicos}
             >
               Siguiente
             </button>
           </div>
-        </div>
+          <form onSubmit={handleSubmit}>
+            <div
+              className="opcionesIntro"
+              style={{
+                gap: ".5rem",
+                display: "flex",
+                flexDirection: "column",
+                width: "500px",
+                border: "4px solid #00ff93",
+                borderRadius: "25px",
+                backgroundColor: "rgba(0, 0, 0, 0.9)",
+                padding: "2rem",
+              }}
+            >
+              <label>Texto de introducción</label>
+              <textarea
+                defaultValue={currentCaso.texto_intro}
+                name="texto_intro"
+                placeholder="Texto Intro"
+              />
+              <label>Valor</label>
+              <select name="id_valor">
+                <option value="1">Amistad</option>
+                <option value="2">Trabajo en equipo</option>
+                <option value="3">Justicia</option>
+                <option value="4">Tolerancia</option>
+                <option value="5">Bondad</option>
+              </select>
+              <label>Nombre</label>
+              <input
+                defaultValue={currentCaso.nombre}
+                type="text"
+                name="nombre"
+              />
+              <button
+                type="button"
+                className="button-gestion"
+                onClick={cambiarBasicos}
+              >
+                Siguiente
+              </button>
+            </div>
 
-        <div className="opcionesRedencion" style={{ display: "none" }}>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "45%" }}
-            >
-              <label>Texto Redencion Pasiva</label>
-              <textarea name="texto_Redencion_Pasiva" />
+            <div className="opcionesBasicas" style={{ display: "none" }}>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "45%",
+                  }}
+                >
+                  <label>Texto Opcion Basica</label>
+                  <input
+                    defaultValue={currentCaso.texto_Opcion_Basica}
+                    type="text"
+                    name="texto_Opcion_Basica"
+                  />
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "45%",
+                  }}
+                >
+                  <label>Texto Opcion Avanzada</label>
+                  <input
+                    defaultValue={currentCaso.texto_Opcion_Avanzada}
+                    type="text"
+                    name="texto_Opcion_Avanzada"
+                  />
+                </div>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "45%",
+                  }}
+                >
+                  <label>Texto Opcion Pasiva</label>
+                  <input
+                    defaultValue={currentCaso.texto_Opcion_Pasiva}
+                    type="text"
+                    name="texto_Opcion_Pasiva"
+                  />
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "45%",
+                  }}
+                >
+                  <label>Texto Opcion Agresiva</label>
+                  <input
+                    defaultValue={currentCaso.texto_Opcion_Agresiva}
+                    type="text"
+                    name="texto_Opcion_Agresiva"
+                  />
+                </div>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "45%",
+                  }}
+                >
+                  <label>Imagen Opcion Basica</label>
+                  <input type="file" name="imagenBasica" />
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "45%",
+                  }}
+                >
+                  <label>Imagen Opcion Avanzada</label>
+                  <input type="file" name="imagenAvanzada" />
+                </div>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "45%",
+                  }}
+                >
+                  <label>Imagen Opcion Pasiva</label>
+                  <input type="file" name="imagenPasiva" />
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "45%",
+                  }}
+                >
+                  <label>Imagen Opcion Agresiva</label>
+                  <input type="file" name="imagenAgresiva" />
+                </div>
+              </div>
+              <div style={{ display: "flex", gap: "1rem", paddingTop: "1rem" }}>
+                <button
+                  type="button"
+                  style={{
+                    marginTop: "1rem",
+                    width: "50%",
+                    alignSelf: "center",
+                  }}
+                  className="button-gestion"
+                  onClick={cambiarIntro}
+                >
+                  Atrás
+                </button>
+                <button
+                  type="button"
+                  style={{
+                    marginTop: "1rem",
+                    width: "50%",
+                    alignSelf: "center",
+                  }}
+                  className="button-gestion"
+                  onClick={redenciones}
+                >
+                  Siguiente
+                </button>
+              </div>
             </div>
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "45%" }}
-            >
-              <label>Texto Redencion Agresiva</label>
-              <textarea name="texto_Redencion_Agresiva" />
-            </div>
-          </div>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "45%" }}
-            >
-              <label>Texto Redencion Pasiva Mala</label>
-              <input type="text" name="texto_Redencion_Mala_Pasiva" />
-            </div>
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "45%" }}
-            >
-              <label>Texto Redencion Pasiva Buena</label>
-              <input type="text" name="texto_Redencion_Buena_Pasiva" />
-            </div>
-          </div>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "45%" }}
-            >
-              <label>Texto Redencion Agresiva Buena</label>
-              <input type="text" name="texto_Redencion_Buena_Agresiva" />
-            </div>
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "45%" }}
-            >
-              <label>Texto Redencion Agresiva Mala</label>
-              <input type="text" name="texto_Redencion_Mala_Agresiva" />
-            </div>
-          </div>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "45%" }}
-            >
-              <label>Imagen Redencion Pasiva</label>
-              <input type="file" name="imagenRedencionPasiva" />
-            </div>
-            <div
-              style={{ display: "flex", flexDirection: "column", width: "45%" }}
-            >
-              <label>Imagen Redencion Agresiva</label>
-              <input type="file" name="imagenRedencionAgresiva" />
-            </div>
-          </div>
-          <div style={{ display: "flex", gap: "1rem", paddingTop: "1rem" }}>
-            <button
-              className="button-gestion"
-              style={{ marginTop: "1rem", width: "50%", alignSelf: "center" }}
-              onClick={cambiarBasicos}
-            >
-              Atrás
-            </button>
-            <button
-              className="button-gestion"
-              style={{ marginTop: "1rem", width: "50%", alignSelf: "center" }}
-              type="submit"
-            >
-              Crear
-            </button>
-          </div>
-        </div>
-      </form>
-      <div className="datos">
 
-      </div>
+            <div className="opcionesRedencion" style={{ display: "none" }}>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "45%",
+                  }}
+                >
+                  <label>Texto Redencion Pasiva</label>
+                  <textarea
+                    defaultValue={currentCaso.texto_Redencion_Pasiva}
+                    name="texto_Redencion_Pasiva"
+                  />
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "45%",
+                  }}
+                >
+                  <label>Texto Redencion Agresiva</label>
+                  <textarea
+                    defaultValue={currentCaso.texto_Redencion_Agresiva}
+                    name="texto_Redencion_Agresiva"
+                  />
+                </div>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "45%",
+                  }}
+                >
+                  <label>Texto Redencion Pasiva Mala</label>
+                  <input
+                    defaultValue={currentCaso.texto_Redencion_Mala_Pasiva}
+                    type="text"
+                    name="texto_Redencion_Mala_Pasiva"
+                  />
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "45%",
+                  }}
+                >
+                  <label>Texto Redencion Pasiva Buena</label>
+                  <input
+                    defaultValue={currentCaso.texto_Redencion_Buena_Pasiva}
+                    type="text"
+                    name="texto_Redencion_Buena_Pasiva"
+                  />
+                </div>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "45%",
+                  }}
+                >
+                  <label>Texto Redencion Agresiva Buena</label>
+                  <input
+                    defaultValue={currentCaso.texto_Redencion_Buena_Agresiva}
+                    type="text"
+                    name="texto_Redencion_Buena_Agresiva"
+                  />
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "45%",
+                  }}
+                >
+                  <label>Texto Redencion Agresiva Mala</label>
+                  <input
+                    defaultValue={currentCaso.texto_Redencion_Mala_Agresiva}
+                    type="text"
+                    name="texto_Redencion_Mala_Agresiva"
+                  />
+                </div>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "45%",
+                  }}
+                >
+                  <label>Imagen Redencion Pasiva</label>
+                  <input type="file" name="imagenRedencionPasiva" />
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: "45%",
+                  }}
+                >
+                  <label>Imagen Redencion Agresiva</label>
+                  <input type="file" name="imagenRedencionAgresiva" />
+                </div>
+              </div>
+              <div style={{ display: "flex", gap: "1rem", paddingTop: "1rem" }}>
+                <button
+                  type="button"
+                  className="button-gestion"
+                  style={{
+                    marginTop: "1rem",
+                    width: "50%",
+                    alignSelf: "center",
+                  }}
+                  onClick={cambiarBasicos}
+                >
+                  Atrás
+                </button>
+                <button
+                  type="submit"
+                  className="button-gestion"
+                  style={{
+                    marginTop: "1rem",
+                    width: "50%",
+                    alignSelf: "center",
+                  }}
+                >
+                  Crear
+                </button>
+              </div>
+            </div>
+          </form>
+          <div className="datos"></div>
+        </>
+      )}
     </div>
-
   );
 };
 

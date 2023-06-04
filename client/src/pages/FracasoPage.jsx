@@ -38,7 +38,13 @@ const FracasoPage = () => {
         height: "100vh",
       }}
     >
-      <h1 className="titulo-final">NO HAS CONSEGUIDO {caso.recompensa}</h1>
+      <div
+        style={{
+          backgroundColor: "rgba(255,255,255,0.8)",
+        }}
+      >
+        <h1 className="titulo-final">NO HAS CONSEGUIDO {caso.recompensa}</h1>
+      </div>
 
       <button onClick={handleContinuar} className="mi-btn-infantil">
         Continuemos

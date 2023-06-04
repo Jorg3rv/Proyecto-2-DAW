@@ -21,7 +21,7 @@ exports.getCasoById = function (req, res) {
 
 exports.insertSelectedOptionByCaso = (req, res) => {
     console.log("INSERTANDO EL RESULTADO DEL CASO");
-    let caso = req.body.caso;
+    let caso = req;
 
     console.log(caso);
 
