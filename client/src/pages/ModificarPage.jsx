@@ -27,8 +27,18 @@ const ModificarPage = () => {
   const [imagenPasiva, setImagenPasiva] = useState(null);
   const [imagenRedencionPasiva, setImagenRedencionPasiva] = useState(null);
   const [imagenRedencionAgresiva, setImagenRedencionAgresiva] = useState(null);
+  const [valores, setValores] = useState([]);
 
   useEffect(() => {
+    axios
+      .get("http://54.88.52.250/api/v1/valores")
+      .then((response) => {
+        setValores(response.data);
+      })
+      .catch((error) => {
+        console.error("ERROR AL TRAER LOS VALORES: ", error);
+      });
+
     axios
       .get("http://54.88.52.250/api/v1/casos/pedir")
       .then((response) => {
@@ -81,7 +91,6 @@ const ModificarPage = () => {
   };
 
   const cambiarIntro = () => {
-
     document.getElementsByClassName("opcionesBasicas")[0].style.display =
       "none";
     document.getElementsByClassName("opcionesRedencion")[0].style.display =
@@ -96,7 +105,7 @@ const ModificarPage = () => {
     opcionesIntro.style.borderRadius = "25px";
     opcionesIntro.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
     opcionesIntro.style.padding = "2rem";
-    
+
     opcionesIntro2.style.gap = ".5rem";
     opcionesIntro2.style.display = "flex";
     opcionesIntro2.style.flexDirection = "column";
@@ -108,12 +117,10 @@ const ModificarPage = () => {
   };
 
   const cambiarBasicos = () => {
-    document.getElementsByClassName("opcionesIntro")[0].style.display =
-    "none";
-    document.getElementsByClassName("opcionesIntro")[1].style.display =
-    "none";
-  document.getElementsByClassName("opcionesRedencion")[0].style.display =
-    "none";
+    document.getElementsByClassName("opcionesIntro")[0].style.display = "none";
+    document.getElementsByClassName("opcionesIntro")[1].style.display = "none";
+    document.getElementsByClassName("opcionesRedencion")[0].style.display =
+      "none";
     const opcionesBasicas =
       document.getElementsByClassName("opcionesBasicas")[0];
     opcionesBasicas.style.gap = ".5rem";
@@ -135,10 +142,8 @@ const ModificarPage = () => {
   const redenciones = () => {
     document.getElementsByClassName("opcionesBasicas")[0].style.display =
       "none";
-      document.getElementsByClassName("opcionesIntro")[1].style.display =
-      "none";
-      document.getElementsByClassName("opcionesIntro")[0].style.display =
-      "none";
+    document.getElementsByClassName("opcionesIntro")[1].style.display = "none";
+    document.getElementsByClassName("opcionesIntro")[0].style.display = "none";
     const opcionesRedencion =
       document.getElementsByClassName("opcionesRedencion")[0];
     opcionesRedencion.style.gap = ".5rem";
@@ -312,11 +317,16 @@ const ModificarPage = () => {
               />
               <label>Valor</label>
               <select name="id_valor">
-                <option value="1">Amistad</option>
-                <option value="2">Trabajo en equipo</option>
-                <option value="3">Justicia</option>
-                <option value="4">Tolerancia</option>
-                <option value="5">Bondad</option>
+                {valores.map((valor) => (
+                  <option
+                    defaultValue={
+                      valor.id == currentCaso.id_valor && currentCaso.id_valor
+                    }
+                    label={valor.nombre}
+                    key={valor.id}
+                    value={valor.id}
+                  />
+                ))}
               </select>
               <label>Nombre</label>
               <input

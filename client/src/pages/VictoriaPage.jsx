@@ -15,13 +15,13 @@ const VictoriaPage = () => {
       caso: selectedOption,
     });
 
-    console.log("inserCasoData: ", inserCasoData);
-
     setCurrentCaso(currentCaso + 1);
     if (currentCaso + 1 == itinerario.idCasos.length) {
+      console.log("currentCaso: ", currentCaso);
       setCurrentCaso(0);
       navigate("/main");
     } else {
+      console.log("currentCaso: ", currentCaso);
       navigate("/partida");
     }
   };
