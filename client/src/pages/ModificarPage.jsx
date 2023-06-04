@@ -39,8 +39,16 @@ const ModificarPage = () => {
   };
 
   const cambiarBasicos = () => {
-    document.getElementsByClassName("opcionesBasicas")[0].style.display =
-      "grid";
+    const opcionesBasicas =
+      document.getElementsByClassName("opcionesBasicas")[0];
+    opcionesBasicas.style.gap = ".5rem";
+    opcionesBasicas.style.display = "flex";
+    opcionesBasicas.style.flexDirection = "column";
+    opcionesBasicas.style.width = "1000px";
+    opcionesBasicas.style.border = "4px solid #00ff93";
+    opcionesBasicas.style.borderRadius = "25px";
+    opcionesBasicas.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+    opcionesBasicas.style.padding = "2rem";
     document.getElementsByClassName("opcionesRedencion")[0].style.display =
       "none";
     document.getElementsByClassName("opcionesIntro")[0].style.display = "none";
@@ -57,7 +65,7 @@ const ModificarPage = () => {
     opcionesRedencion.style.gap = ".5rem";
     opcionesRedencion.style.display = "flex";
     opcionesRedencion.style.flexDirection = "column";
-    opcionesRedencion.style.width = "500px";
+    opcionesRedencion.style.width = "1000px";
     opcionesRedencion.style.border = "4px solid #00ff93";
     opcionesRedencion.style.borderRadius = "25px";
     opcionesRedencion.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
@@ -195,49 +203,159 @@ const ModificarPage = () => {
           </select>
           <label>Nombre</label>
           <input type="text" name="nombre" />
-          <button onClick={cambiarBasicos}>Siguiente</button>
+          <button className="button-gestion" onClick={cambiarBasicos}>
+            Siguiente
+          </button>
         </div>
 
         <div className="opcionesBasicas" style={{ display: "none" }}>
-          <label>Texto Opcion Basica</label>
-          <input type="text" name="texto_Opcion_Basica" />
-          <label>Texto Opcion Avanzada</label>
-          <input type="text" name="texto_Opcion_Avanzada" />
-          <label>Texto Opcion Pasiva</label>
-          <input type="text" name="texto_Opcion_Pasiva" />
-          <label>Texto Opcion Agresiva</label>
-          <input type="text" name="texto_Opcion_Agresiva" />
-          <label>Imagen Opcion Basica</label>
-          <input type="file" name="imagenBasica" />
-          <label>Imagen Opcion Avanzada</label>
-          <input type="file" name="imagenAvanzada" />
-          <label>Imagen Opcion Pasiva</label>
-          <input type="file" name="imagenPasiva" />
-          <label>Imagen Opcion Agresiva</label>
-          <input type="file" name="imagenAgresiva" />
-          <button onClick={cambiarIntro}>Atrás</button>
-          <button onClick={redenciones}>Siguiente</button>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "45%" }}
+            >
+              <label>Texto Opcion Basica</label>
+              <input type="text" name="texto_Opcion_Basica" />
+            </div>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "45%" }}
+            >
+              <label>Texto Opcion Avanzada</label>
+              <input type="text" name="texto_Opcion_Avanzada" />
+            </div>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "45%" }}
+            >
+              <label>Texto Opcion Pasiva</label>
+              <input type="text" name="texto_Opcion_Pasiva" />
+            </div>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "45%" }}
+            >
+              <label>Texto Opcion Agresiva</label>
+              <input type="text" name="texto_Opcion_Agresiva" />
+            </div>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "45%" }}
+            >
+              <label>Imagen Opcion Basica</label>
+              <input type="file" name="imagenBasica" />
+            </div>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "45%" }}
+            >
+              <label>Imagen Opcion Avanzada</label>
+              <input type="file" name="imagenAvanzada" />
+            </div>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "45%" }}
+            >
+              <label>Imagen Opcion Pasiva</label>
+              <input type="file" name="imagenPasiva" />
+            </div>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "45%" }}
+            >
+              <label>Imagen Opcion Agresiva</label>
+              <input type="file" name="imagenAgresiva" />
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: "1rem", paddingTop: "1rem" }}>
+            <button
+              style={{ marginTop: "1rem", width: "50%", alignSelf: "center" }}
+              className="button-gestion"
+              onClick={cambiarIntro}
+            >
+              Atrás
+            </button>
+            <button
+              style={{ marginTop: "1rem", width: "50%", alignSelf: "center" }}
+              className="button-gestion"
+              onClick={redenciones}
+            >
+              Siguiente
+            </button>
+          </div>
         </div>
 
         <div className="opcionesRedencion" style={{ display: "none" }}>
-          <label>Texto Redencion Pasiva</label>
-          <textarea name="texto_Redencion_Pasiva" />
-          <label>Texto Redencion Pasiva Buena</label>
-          <input type="text" name="texto_Redencion_Buena_Pasiva" />
-          <label>Texto Redencion Pasiva Mala</label>
-          <input type="text" name="texto_Redencion_Mala_Pasiva" />
-          <label>Texto Redencion Agresiva</label>
-          <textarea name="texto_Redencion_Agresiva" />
-          <label>Texto Redencion Agresiva Buena</label>
-          <input type="text" name="texto_Redencion_Buena_Agresiva" />
-          <label>Texto Redencion Agresiva Mala</label>
-          <input type="text" name="texto_Redencion_Mala_Agresiva" />
-          <label>Imagen Redencion Pasiva</label>
-          <input type="file" name="imagenRedencionPasiva" />
-          <label>Imagen Redencion Agresiva</label>
-          <input type="file" name="imagenRedencionAgresiva" />
-          <button onClick={cambiarBasicos}>Atrás</button>
-          <button type="submit">Crear</button>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "45%" }}
+            >
+              <label>Texto Redencion Pasiva</label>
+              <textarea name="texto_Redencion_Pasiva" />
+            </div>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "45%" }}
+            >
+              <label>Texto Redencion Agresiva</label>
+              <textarea name="texto_Redencion_Agresiva" />
+            </div>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "45%" }}
+            >
+              <label>Texto Redencion Pasiva Mala</label>
+              <input type="text" name="texto_Redencion_Mala_Pasiva" />
+            </div>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "45%" }}
+            >
+              <label>Texto Redencion Pasiva Buena</label>
+              <input type="text" name="texto_Redencion_Buena_Pasiva" />
+            </div>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "45%" }}
+            >
+              <label>Texto Redencion Agresiva Buena</label>
+              <input type="text" name="texto_Redencion_Buena_Agresiva" />
+            </div>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "45%" }}
+            >
+              <label>Texto Redencion Agresiva Mala</label>
+              <input type="text" name="texto_Redencion_Mala_Agresiva" />
+            </div>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "45%" }}
+            >
+              <label>Imagen Redencion Pasiva</label>
+              <input type="file" name="imagenRedencionPasiva" />
+            </div>
+            <div
+              style={{ display: "flex", flexDirection: "column", width: "45%" }}
+            >
+              <label>Imagen Redencion Agresiva</label>
+              <input type="file" name="imagenRedencionAgresiva" />
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: "1rem", paddingTop: "1rem" }}>
+            <button
+              className="button-gestion"
+              style={{ marginTop: "1rem", width: "50%", alignSelf: "center" }}
+              onClick={cambiarBasicos}
+            >
+              Atrás
+            </button>
+            <button
+              className="button-gestion"
+              style={{ marginTop: "1rem", width: "50%", alignSelf: "center" }}
+              type="submit"
+            >
+              Crear
+            </button>
+          </div>
         </div>
       </form>
       <div className="datos"></div>

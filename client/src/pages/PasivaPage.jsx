@@ -10,7 +10,8 @@ const PasivaPage = () => {
   const [loading, setLoading] = useState(true);
   const [texto, setTexto] = useState(null);
   const [options, setOptions] = useState([]);
-  const { caso } = useContext(ItinerarioContext);
+  const { caso, setSelectedOption } =
+    useContext(ItinerarioContext);
   const [textoProfesor, setTextoProfesor] = useState([]);
   const [textoAlumno, setTextoAlumno] = useState([]);
 
@@ -64,6 +65,12 @@ const PasivaPage = () => {
     console.log("TEXTO PROFESOR: ", textoProfesor);
     console.log("TEXTO ALUMNO: ", textoAlumno);
   }, [textoProfesor, textoAlumno]);
+
+  const handleClickOption = (name) => {
+    if (!name) return;
+
+    setSelectedOption({ idCaso: caso.id, name: name });
+  };
 
   return (
     <div
@@ -135,7 +142,12 @@ const PasivaPage = () => {
           >
             {options.map((option) => (
               <Link className="links" to={`/${option.type}`}>
-                <button className="mi-btn-caso-redencion">{option.text}</button>
+                <button
+                  onClick={() => handleClickOption(option?.name)}
+                  className="mi-btn-caso-redencion"
+                >
+                  {option.text}
+                </button>
               </Link>
             ))}
           </div>

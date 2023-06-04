@@ -94,7 +94,7 @@ const CreacionPage = () => {
     )[0].value;
     texto_Redencion_Pasiva = document.getElementsByName(
       "texto_Redencion_Pasiva"
-    )[0].value;
+    )[0]?.value;
     imagenBasica = document.getElementsByName("imagenBasica")[0].files[0];
     imagenAvanzada = document.getElementsByName("imagenAvanzada")[0].files[0];
     imagenAgresiva = document.getElementsByName("imagenAgresiva")[0].files[0];

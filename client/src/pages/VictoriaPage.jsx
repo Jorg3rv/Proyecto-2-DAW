@@ -1,15 +1,22 @@
 import React, { useContext, useEffect } from "react";
 import { ItinerarioContext } from "../context/ItinerarioContext";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const VictoriaPage = () => {
   const navigate = useNavigate();
   const { caso } = useContext(ItinerarioContext);
-  const { setCurrentCaso, currentCaso, itinerario } =
+  const { setCurrentCaso, currentCaso, itinerario, selectedOption } =
     useContext(ItinerarioContext);
 
-  const handleContinuar = () => {
-    console.log("ITINERARIO: ", itinerario);
+  const handleContinuar = async () => {
+    console.log("selectedOption: ", selectedOption);
+    let inserCasoData = await axios.post("/api/v1/caso", {
+      caso: selectedOption,
+    });
+
+    console.log("inserCasoData: ", inserCasoData);
+
     setCurrentCaso(currentCaso + 1);
     if (currentCaso + 1 == itinerario.idCasos.length) {
       setCurrentCaso(0);

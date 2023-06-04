@@ -10,6 +10,7 @@ export const ItinerarioContextProvider = ({ children }) => {
     const [itinerario, setItinerario] = useState(null);
     const [currentCaso, setCurrentCaso] = useState(0);
     const [loading, setLoading] = useState(true);
+    const [selectedOption, setSelectedOption] = useState();
 
     useEffect(() => {
         console.log('GETTING ITINERARIO');
@@ -82,6 +83,8 @@ export const ItinerarioContextProvider = ({ children }) => {
         setItinerario,
         currentProfesor,
         setCurrentProfesor,
+        selectedOption,
+        setSelectedOption,
     };
 
     return loading ? (

@@ -19,4 +19,22 @@ exports.getCasoById = function (req, res) {
 };
 
 
+exports.insertSelectedOptionByCaso = (req, res) => {
+    console.log("INSERTANDO EL RESULTADO DEL CASO");
+    let caso = req.body.caso;
 
+    console.log(caso);
+
+
+    const query = `insert into partida_caso(id_partida,id_caso,opcion) values(?,${caso.idCaso},${caso.name})`;
+    connection.query(query, (err, results, filed) => {
+        if (err) {
+            console.log("ERROR AL INSERTAR EL RESULTADO DEL CASO");
+        } else {
+            res.json({
+                status: 200,
+                data: results,
+            });
+        }
+    });
+} 

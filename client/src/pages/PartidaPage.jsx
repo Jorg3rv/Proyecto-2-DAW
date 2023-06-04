@@ -6,30 +6,31 @@ import { shuffleArray } from "../helpers/utils";
 import { ItinerarioContext } from "../context/ItinerarioContext";
 
 const PartidaPage = () => {
-  const { caso } = useContext(ItinerarioContext);
+  const { caso, setSelectedOption } =
+    useContext(ItinerarioContext);
   const [loading, setLoading] = useState(true);
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
     if (caso) {
+      console.log("CASO: ", caso);
       const fields = [
         {
           type: "agresiva",
           text: caso.texto_Opcion_Agresiva,
           img: caso.imagen_Opcion_Agresiva,
-          
         },
         {
           type: "victoria",
           text: caso.texto_Opcion_Avanzada,
           img: caso.imagen_Opcion_Avanzada,
-          name: "avanzada"
+          name: "avanzada",
         },
         {
           type: "victoria",
           text: caso.texto_Opcion_Basica,
           img: caso.imagen_Opcion_Basica,
-          name: "basica"
+          name: "basica",
         },
         {
           type: "pasiva",
@@ -46,6 +47,12 @@ const PartidaPage = () => {
   useEffect(() => {
     console.log("OPCIONES: ", options);
   }, [options]);
+
+  const handleClickOption = (name) => {
+    if (!name) return;
+
+    setSelectedOption( { idCaso: caso.id, name: name });
+  };
 
   return (
     <div
@@ -109,6 +116,7 @@ const PartidaPage = () => {
                 return (
                   <Link className="links" to={`/${option.type}`}>
                     <button
+                      onClick={() => handleClickOption(option?.name)}
                       className="mi-btn-caso"
                       style={{
                         backgroundImage: `url("http://44.205.198.225/imagenes/${option.img}")`,
@@ -116,9 +124,13 @@ const PartidaPage = () => {
                         backgroundSize: "cover",
                       }}
                     >
-                      <div style={{
-                        backgroundColor: "rgba(255,255,255,0.8)",
-                      }}>{option.text}</div>
+                      <div
+                        style={{
+                          backgroundColor: "rgba(255,255,255,0.8)",
+                        }}
+                      >
+                        {option.text}
+                      </div>
                     </button>
                   </Link>
                 );
