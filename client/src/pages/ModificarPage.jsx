@@ -81,11 +81,13 @@ const ModificarPage = () => {
   };
 
   const cambiarIntro = () => {
+
     document.getElementsByClassName("opcionesBasicas")[0].style.display =
       "none";
     document.getElementsByClassName("opcionesRedencion")[0].style.display =
       "none";
     const opcionesIntro = document.getElementsByClassName("opcionesIntro")[0];
+    const opcionesIntro2 = document.getElementsByClassName("opcionesIntro")[1];
     opcionesIntro.style.gap = ".5rem";
     opcionesIntro.style.display = "flex";
     opcionesIntro.style.flexDirection = "column";
@@ -94,9 +96,24 @@ const ModificarPage = () => {
     opcionesIntro.style.borderRadius = "25px";
     opcionesIntro.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
     opcionesIntro.style.padding = "2rem";
+    
+    opcionesIntro2.style.gap = ".5rem";
+    opcionesIntro2.style.display = "flex";
+    opcionesIntro2.style.flexDirection = "column";
+    opcionesIntro2.style.width = "500px";
+    opcionesIntro2.style.border = "4px solid #00ff93";
+    opcionesIntro2.style.borderRadius = "25px";
+    opcionesIntro2.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+    opcionesIntro2.style.padding = "2rem";
   };
 
   const cambiarBasicos = () => {
+    document.getElementsByClassName("opcionesIntro")[0].style.display =
+    "none";
+    document.getElementsByClassName("opcionesIntro")[1].style.display =
+    "none";
+  document.getElementsByClassName("opcionesRedencion")[0].style.display =
+    "none";
     const opcionesBasicas =
       document.getElementsByClassName("opcionesBasicas")[0];
     opcionesBasicas.style.gap = ".5rem";
@@ -117,6 +134,10 @@ const ModificarPage = () => {
 
   const redenciones = () => {
     document.getElementsByClassName("opcionesBasicas")[0].style.display =
+      "none";
+      document.getElementsByClassName("opcionesIntro")[1].style.display =
+      "none";
+      document.getElementsByClassName("opcionesIntro")[0].style.display =
       "none";
     const opcionesRedencion =
       document.getElementsByClassName("opcionesRedencion")[0];

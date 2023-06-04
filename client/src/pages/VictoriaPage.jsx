@@ -11,7 +11,7 @@ const VictoriaPage = () => {
 
   const handleContinuar = async () => {
     console.log("selectedOption: ", selectedOption);
-    let inserCasoData = await axios.post("/api/v1/caso", {
+    let inserCasoData = await axios.post("http://54.88.52.250/api/v1/caso", {
       caso: selectedOption,
     });
 
