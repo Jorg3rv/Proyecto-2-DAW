@@ -90,15 +90,31 @@ const CreacionItinerarioPage = () => {
             </option>
           ))}
         </select>
-        <button onClick={handleAdd}>Añadir</button>
+        <button style={{ cursor: "pointer" }} onClick={handleAdd}>
+          Añadir
+        </button>
         <br></br>
         <label>Casos añadidos al Itinerario:</label>
         <div className="casos_añadidos"></div>
         {hiddenInput.map((option, index) => (
           <input type="hidden" key={index} value={option} />
         ))}
-        <button onClick={handleSubmit}>Enviar</button>
-        <button onClick={handleShowData}>Mostrar Datos</button>
+        <div style={{ display: "flex", gap: "1rem", paddingTop: "1rem" }}>
+          <button
+            className="button-gestion"
+            style={{ padding: "1rem", width: "50%", alignSelf: "center" }}
+            onClick={handleSubmit}
+          >
+            Enviar
+          </button>
+          <button
+            className="button-gestion"
+            style={{ padding: "1rem", width: "50%", alignSelf: "center" }}
+            onClick={handleShowData}
+          >
+            Mostrar Datos
+          </button>
+        </div>
       </div>
     </div>
   );
