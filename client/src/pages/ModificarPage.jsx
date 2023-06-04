@@ -304,10 +304,17 @@ const ModificarPage = () => {
             >
               <label>Texto de introducción</label>
               <textarea
-                defaultValue={currentCaso.texto_intro}
+                onChange={(event) =>
+                  setCurrentCaso({
+                    ...currentCaso,
+                    texto_intro: event.target.value,
+                  })
+                }
+                value={currentCaso.texto_intro}
                 name="texto_intro"
                 placeholder="Texto Intro"
               />
+
               <label>Valor</label>
               <select name="id_valor">
                 {valores.map((valor) => (
@@ -323,7 +330,13 @@ const ModificarPage = () => {
               </select>
               <label>Nombre</label>
               <input
-                defaultValue={currentCaso.nombre}
+                onChange={(event) => {
+                  setCurrentCaso({
+                    ...currentCaso,
+                    nombre: event.target.value,
+                  });
+                }}
+                value={currentCaso.nombre}
                 type="text"
                 name="nombre"
               />
@@ -347,7 +360,13 @@ const ModificarPage = () => {
                 >
                   <label>Texto Opcion Basica</label>
                   <input
-                    defaultValue={currentCaso.texto_Opcion_Basica}
+                    onChange={(event) => {
+                      setCurrentCaso({
+                        ...currentCaso,
+                        texto_Opcion_Basica: event.target.value,
+                      });
+                    }}
+                    value={currentCaso.texto_Opcion_Basica}
                     type="text"
                     name="texto_Opcion_Basica"
                   />
@@ -361,7 +380,13 @@ const ModificarPage = () => {
                 >
                   <label>Texto Opcion Avanzada</label>
                   <input
-                    defaultValue={currentCaso.texto_Opcion_Avanzada}
+                    onChange={(event) => {
+                      setCurrentCaso({
+                        ...currentCaso,
+                        texto_Opcion_Avanzada: event.target.value,
+                      });
+                    }}
+                    value={currentCaso.texto_Opcion_Avanzada}
                     type="text"
                     name="texto_Opcion_Avanzada"
                   />
@@ -377,7 +402,13 @@ const ModificarPage = () => {
                 >
                   <label>Texto Opcion Pasiva</label>
                   <input
-                    defaultValue={currentCaso.texto_Opcion_Pasiva}
+                    onChange={(event) => {
+                      setCurrentCaso({
+                        ...currentCaso,
+                        texto_Opcion_Pasiva: event.target.value,
+                      });
+                    }}
+                    value={currentCaso.texto_Opcion_Pasiva}
                     type="text"
                     name="texto_Opcion_Pasiva"
                   />
@@ -391,7 +422,13 @@ const ModificarPage = () => {
                 >
                   <label>Texto Opcion Agresiva</label>
                   <input
-                    defaultValue={currentCaso.texto_Opcion_Agresiva}
+                    onChange={(event) => {
+                      setCurrentCaso({
+                        ...currentCaso,
+                        texto_Opcion_Agresiva: event.target.value,
+                      });
+                    }}
+                    value={currentCaso.texto_Opcion_Agresiva}
                     type="text"
                     name="texto_Opcion_Agresiva"
                   />
@@ -480,7 +517,13 @@ const ModificarPage = () => {
                 >
                   <label>Texto Redencion Pasiva</label>
                   <textarea
-                    defaultValue={currentCaso.texto_Redencion_Pasiva}
+                    onChange={(event) => {
+                      setCurrentCaso({
+                        ...currentCaso,
+                        texto_Redencion_Pasiva: event.target.value,
+                      });
+                    }}
+                    value={currentCaso.texto_Redencion_Pasiva}
                     name="texto_Redencion_Pasiva"
                   />
                 </div>
@@ -493,7 +536,13 @@ const ModificarPage = () => {
                 >
                   <label>Texto Redencion Agresiva</label>
                   <textarea
-                    defaultValue={currentCaso.texto_Redencion_Agresiva}
+                    onChange={(event) => {
+                      setCurrentCaso({
+                        ...currentCaso,
+                        texto_Redencion_Agresiva: event.target.value,
+                      });
+                    }}
+                    value={currentCaso.texto_Redencion_Agresiva}
                     name="texto_Redencion_Agresiva"
                   />
                 </div>
@@ -508,7 +557,13 @@ const ModificarPage = () => {
                 >
                   <label>Texto Redencion Pasiva Mala</label>
                   <input
-                    defaultValue={currentCaso.texto_Redencion_Mala_Pasiva}
+                    onChange={(event) => {
+                      setCurrentCaso({
+                        ...currentCaso,
+                        texto_Redencion_Mala_Pasiva: event.target.value,
+                      });
+                    }}
+                    value={currentCaso.texto_Redencion_Mala_Pasiva}
                     type="text"
                     name="texto_Redencion_Mala_Pasiva"
                   />
@@ -522,7 +577,13 @@ const ModificarPage = () => {
                 >
                   <label>Texto Redencion Pasiva Buena</label>
                   <input
-                    defaultValue={currentCaso.texto_Redencion_Buena_Pasiva}
+                    onChange={(event) => {
+                      setCurrentCaso({
+                        ...currentCaso,
+                        texto_Redencion_Buena_Pasiva: event.target.value,
+                      });
+                    }}
+                    value={currentCaso.texto_Redencion_Buena_Pasiva}
                     type="text"
                     name="texto_Redencion_Buena_Pasiva"
                   />
@@ -538,7 +599,13 @@ const ModificarPage = () => {
                 >
                   <label>Texto Redencion Agresiva Buena</label>
                   <input
-                    defaultValue={currentCaso.texto_Redencion_Buena_Agresiva}
+                    onChange={(event) => {
+                      setCurrentCaso({
+                        ...currentCaso,
+                        texto_Redencion_Buena_Agresiva: event.target.value,
+                      });
+                    }}
+                    value={currentCaso.texto_Redencion_Buena_Agresiva}
                     type="text"
                     name="texto_Redencion_Buena_Agresiva"
                   />
@@ -552,7 +619,13 @@ const ModificarPage = () => {
                 >
                   <label>Texto Redencion Agresiva Mala</label>
                   <input
-                    defaultValue={currentCaso.texto_Redencion_Mala_Agresiva}
+                  onChange={(event) => {
+                    setCurrentCaso({
+                      ...currentCaso,
+                      texto_Redencion_Mala_Agresiva: event.target.value,
+                    });
+                  }}
+                    value={currentCaso.texto_Redencion_Mala_Agresiva}
                     type="text"
                     name="texto_Redencion_Mala_Agresiva"
                   />
