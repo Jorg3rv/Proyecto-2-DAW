@@ -93,7 +93,7 @@ const AgresivaPage = () => {
                     gap: "1.5rem",
                   }}
                 >
-                  <img src="profe.jpg" style={{width:'10%'}}></img>
+                  <img src="profe.jpg" style={{height:'30%'}}></img>
                   <Bocata className="dialogue-bubble" texto={texto} />
                 </div>
               ))}
