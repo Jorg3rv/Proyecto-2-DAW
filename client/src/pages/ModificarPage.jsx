@@ -64,9 +64,9 @@ const ModificarPage = () => {
             id: selectedOption,
           }
         );
+        console.log("CASO DATA: ", casoData);
         setCurrentCaso(casoData.data[0]);
         setLoading(false);
-        console.log("CASO DATA: ", casoData.data[0]);
       })();
     }
   }, [selectedOption]);
@@ -78,7 +78,6 @@ const ModificarPage = () => {
         `http://44.205.198.225/imagenes/${currentCaso.imagen_Opcion_Avanzada}`
       )
       .then((response) => {
-        console.log("IMAGENES: ", response.data);
         setImagenAvanzada(response.data);
       })
       .catch((error) => {
@@ -87,6 +86,7 @@ const ModificarPage = () => {
   }, [currentCaso]);
 
   const datosCasoCambiar = async (id) => {
+    console.log("ID: ", id);
     setSelectedOption(id);
   };
 
@@ -287,13 +287,6 @@ const ModificarPage = () => {
                 </option>
               ))}
             </select>
-            <button
-              type="button"
-              className="button-gestion"
-              onClick={cambiarBasicos}
-            >
-              Siguiente
-            </button>
           </div>
           <form onSubmit={handleSubmit}>
             <div
