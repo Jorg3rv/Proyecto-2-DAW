@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const ModificarPage = () => {
@@ -21,6 +21,45 @@ const ModificarPage = () => {
   let imagenPasiva = null;
   let imagenRedencionPasiva = null;
   let imagenRedencionAgresiva = null;
+  const [options, setOptions] = useState([]);
+  const [selectedOption, setSelectedOption] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("http://54.88.52.250/api/v1/casos/pedir")
+      .then((response) => {
+        setOptions(response.data);
+      })
+      .catch((error) => {
+        // Manejar errores si es necesario
+      });
+  }, []);
+
+const datosCasoCambiar = async(id) =>{
+console.log(id);
+await axios.post('http://54.88.52.250/api/v1/caso/elegido', {
+  id: id
+})
+.then((response) =>{
+console.log(response.data[0]);
+ id_valor = response.data[0].id_valor;
+ nombre = response.data[0].nombre;
+ texto_intro = response.data[0].texto_intro;
+ texto_Opcion_Basica = response.data[0].texto_Opcion_Basica;
+ texto_Opcion_Avanzada = response.data[0].texto_Opcion_Avanzada;
+ texto_Opcion_Pasiva = response.data[0].texto_Opcion_Pasiva;
+ texto_Opcion_Agresiva = response.data[0].texto_Opcion_Agresiva;
+ texto_Redencion_Pasiva = response.data[0].texto_Redencion_Pasiva;
+ texto_Redencion_Buena_Pasiva = response.data[0].texto_Redencion_Buena_Pasiva;
+ texto_Redencion_Mala_Pasiva = response.data[0].texto_Redencion_Mala_Pasiva;
+ texto_Redencion_Agresiva = response.data[0].texto_Redencion_Agresiva;
+ texto_Redencion_Buena_Agresiva = response.data[0].texto_Redencion_Buena_Agresiva;
+ texto_Redencion_Mala_Agresiva = response.data[0].texto_Redencion_Mala_Agresiva;
+})
+
+
+}
+
 
   const cambiarIntro = () => {
     document.getElementsByClassName("opcionesBasicas")[0].style.display =
@@ -164,19 +203,25 @@ const ModificarPage = () => {
   };
 
   return (
+
     <div
       style={{
-        height: "100vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        flexDirection: "column",
-        backgroundImage: `url("/img1.jpg")`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        gap: "1rem",
+        height: "100vh",
+        color: "white",
       }}
     >
+        <select
+          value={selectedOption}
+          onChange={(event) => datosCasoCambiar(event.target.value)}>
+          {options.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.nombre}
+            </option>
+          ))}
+        </select>
       <form onSubmit={handleSubmit}>
         <div
           className="opcionesIntro"
@@ -192,9 +237,9 @@ const ModificarPage = () => {
           }}
         >
           <label>Texto de introducción</label>
-          <textarea name="texto_intro" placeholder="Texto Intro" />
+          <textarea name="texto_intro" placeholder="Texto Intro"  />
           <label>Valor</label>
-          <select name="id_valor">
+          <select name="id_valor" >
             <option value="1">Amistad</option>
             <option value="2">Trabajo en equipo</option>
             <option value="3">Justicia</option>
@@ -358,8 +403,11 @@ const ModificarPage = () => {
           </div>
         </div>
       </form>
-      <div className="datos"></div>
+      <div className="datos">
+
+      </div>
     </div>
+
   );
 };
 

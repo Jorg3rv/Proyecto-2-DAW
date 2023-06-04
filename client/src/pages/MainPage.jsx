@@ -66,9 +66,6 @@ const MainPage = () => {
               </Link>
             </button>
 
-            {/* <button className="mi-btn-start" onClick={testdb}>
-            Consulta
-          </button> */}
           </div>
           <div
             style={{

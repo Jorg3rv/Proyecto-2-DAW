@@ -107,7 +107,7 @@ const PasivaPage = () => {
                     gap: "1.5rem",
                   }}
                 >
-                  <p style={{ color: "white" }}>Profesor</p>
+                  <img src="profe.jpg" style={{height:'30%'}}></img>
                   <Bocata className="dialogue-bubble" texto={texto} />
                 </div>
               ))}
@@ -125,7 +125,7 @@ const PasivaPage = () => {
                   }}
                 >
                   <Bocata texto={texto} className="dialogue-bubble-right" />
-                  <p style={{ color: "white" }}>Alumno</p>
+                  <img src="Sito.jpg" style={{width:'10%'}}></img>
                 </div>
               ))}
             </div>
