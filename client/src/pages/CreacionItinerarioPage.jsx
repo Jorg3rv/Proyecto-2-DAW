@@ -28,7 +28,7 @@ const CreacionItinerarioPage = () => {
 
   const handleSubmit = async () => {
     await axios
-      .post("http://18.233.219.179/api/v1/itinerario/insertar", {
+      .post("http://54.88.52.250/api/v1/itinerario/insertar", {
         nombre: textInput,
         array: hiddenInput,
       })
