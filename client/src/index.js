@@ -6,8 +6,8 @@ import { ItinerarioContextProvider } from './context/ItinerarioContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <ItinerarioContextProvider>
-      <App />
-    </ItinerarioContextProvider>
+  <ItinerarioContextProvider>
+    <App />
+  </ItinerarioContextProvider>
 );
 

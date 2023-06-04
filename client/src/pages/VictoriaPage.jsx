@@ -9,21 +9,27 @@ const VictoriaPage = () => {
   const { setCurrentCaso, currentCaso, itinerario, selectedOption } =
     useContext(ItinerarioContext);
 
-  const handleContinuar = async () => {
+  const handleContinuar = () => {
     console.log("selectedOption: ", selectedOption);
-    let inserCasoData = await axios.post("http://54.88.52.250/api/v1/caso", {
-      caso: selectedOption,
-    });
-
-    setCurrentCaso(currentCaso + 1);
-    if (currentCaso + 1 == itinerario.idCasos.length) {
-      console.log("currentCaso: ", currentCaso);
-      setCurrentCaso(0);
-      navigate("/main");
-    } else {
-      console.log("currentCaso: ", currentCaso);
-      navigate("/partida");
-    }
+    axios
+      .post("http://54.88.52.250/api/v1/caso", {
+        caso: selectedOption,
+      })
+      .then((response) => {
+        console.log("RESPONSE: ", response);
+        setCurrentCaso(currentCaso + 1);
+        if (currentCaso + 1 == itinerario.idCasos.length) {
+          console.log("currentCaso: ", currentCaso);
+          setCurrentCaso(0);
+          navigate("/main");
+        } else {
+          console.log("currentCaso: ", currentCaso);
+          navigate("/partida");
+        }
+      })
+      .catch((error) => {
+        console.log("ERROR: ", error);
+      });
   };
 
   return (

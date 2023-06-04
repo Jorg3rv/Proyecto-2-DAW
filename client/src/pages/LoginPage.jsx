@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ItinerarioContext } from "../context/ItinerarioContext";
+import toast from "react-hot-toast";
 
 const LoginPage = () => {
   const { setCurrentProfesor } = useContext(ItinerarioContext);
@@ -41,8 +42,12 @@ const LoginPage = () => {
       if (data.status === 200) {
         localStorage.setItem("username_profe", data.data?.name);
         navigate("/main");
+      }else{
+        console.log("ERROR AL LOGUEARSE: ", data);
+        toast.error("Usuario o contraseña incorrectos");
       }
     } catch (error) {
+      toast.error("Usuario o contraseña incorrectos");
       console.log("ERROR AL LOGUEARSE: ", error);
     }
   };

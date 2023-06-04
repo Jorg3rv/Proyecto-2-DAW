@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MainPage from '../pages/MainPage';
 import LoginPage from '../pages/LoginPage';
 import ProtectedRoute from './ProtectedRoute';
@@ -13,55 +13,25 @@ import CreacionItinerarioPage from '../pages/CreacionItinerarioPage';
 import ModificarPage from '../pages/ModificarPage';
 import GestionPage from '../pages/GestionPage';
 
+const AppRouter = () => {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/main" element={<ProtectedRoute component={<MainPage />} />} />
+                <Route path="/gestionar" element={<ProtectedRoute component={<GestionPage />} />} />
+                <Route path="/partida" element={<ProtectedRoute component={<PartidaPage />} />} />
+                <Route path="/fracaso" element={<ProtectedRoute component={<FracasoPage />} />} />
+                <Route path="/victoria" element={<ProtectedRoute component={<VictoriaPage />} />} />
+                <Route path="/prePartida" element={<ProtectedRoute component={<PrePartida />} />} />
+                <Route path="/agresiva" element={<ProtectedRoute component={<AgresivaPage />} />} />
+                <Route path="/pasiva" element={<ProtectedRoute component={<PasivaPage />} />} />
+                <Route path="/crear-partida" element={<ProtectedRoute component={<CreacionPage />} />} />
+                <Route path="/crear-itinerario" element={<ProtectedRoute component={<CreacionItinerarioPage />} />} />
+                <Route path="/modificar-partida" element={<ProtectedRoute component={<ModificarPage />} />} />
+            </Routes>
+        </Router>
+    );
+};
 
-export const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <LoginPage />,
-    },
-    {
-        path: '/main',
-        element: <ProtectedRoute component={<MainPage />} />,
-    },
-    {
-        path: '/gestionar',
-        element: <ProtectedRoute component={<GestionPage />} />,
-    },
-    {
-        path: '/partida',
-        element: <ProtectedRoute component={<PartidaPage />} />,
-    },
-    {
-        path: '/fracaso',
-        element: <ProtectedRoute component={<FracasoPage />} />,
-    },
-    {
-        path: '/victoria',
-        element: <ProtectedRoute component={<VictoriaPage />} />,
-    }
-    ,
-    {
-        path: '/prePartida',
-        element: <ProtectedRoute component={<PrePartida />} />,
-    },
-    {
-        path: '/agresiva',
-        element: <ProtectedRoute component={<AgresivaPage />} />,
-    },
-    {
-        path: '/pasiva',
-        element: <ProtectedRoute component={<PasivaPage />} />,
-    },
-    {
-        path: '/crear-partida',
-        element: <ProtectedRoute component={<CreacionPage />} />,
-    },
-    {
-        path: '/crear-itinerario',
-        element: <ProtectedRoute component={<CreacionItinerarioPage />} />,
-    },
-    {
-        path: '/modificar-partida',
-        element: <ProtectedRoute component={<ModificarPage />} />,
-    }
-])
+export default AppRouter;

@@ -136,7 +136,7 @@ const AgresivaPage = () => {
             {options.map((option) => (
               <Link className="links" to={`/${option.type}`}>
                 <button
-                  onClick={() => handleClickOption(option)}
+                  onClick={() => handleClickOption(option?.name)}
                   className="mi-btn-caso-redencion"
                 >
                   {option.text}
