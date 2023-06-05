@@ -99,20 +99,13 @@ const CreacionItinerarioPage = () => {
         {hiddenInput.map((option, index) => (
           <input type="hidden" key={index} value={option} />
         ))}
-        <div style={{ display: "flex", gap: "1rem", paddingTop: "1rem" }}>
+        <div style={{ display: "flex", gap: "1rem", paddingTop: "1rem", justifyContent:'center' }}>
           <button
             className="button-gestion"
-            style={{ padding: "1rem", width: "50%", alignSelf: "center" }}
+            style={{ padding: "1rem", width: "50%", alignSelf: "center"}}
             onClick={handleSubmit}
           >
             Enviar
-          </button>
-          <button
-            className="button-gestion"
-            style={{ padding: "1rem", width: "50%", alignSelf: "center" }}
-            onClick={handleShowData}
-          >
-            Mostrar Datos
           </button>
         </div>
       </div>

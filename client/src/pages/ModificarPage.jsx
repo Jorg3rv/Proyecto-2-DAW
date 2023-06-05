@@ -72,7 +72,8 @@ const ModificarPage = () => {
   }, [selectedOption]);
 
   useEffect(() => {
-    if (!currentCaso) return;
+   
+    if (!currentCaso){ return}else{ document.getElementsByName('id_valor')[0].value=selectedOption;};
     axios
       .get(
         `http://44.205.198.225/imagenes/${currentCaso.imagen_Opcion_Avanzada}`
@@ -88,6 +89,7 @@ const ModificarPage = () => {
   const datosCasoCambiar = async (id) => {
     console.log("ID: ", id);
     setSelectedOption(id);
+
   };
 
   const cambiarIntro = () => {
